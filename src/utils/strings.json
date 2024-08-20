@@ -1,0 +1,17 @@
+{
+  "layout": {
+    "header": {
+      "title": "masoud-ghanbarzadeh",
+      "menu": [
+        { "title": "_hello", "path": "/" },
+        { "title": "_about_me", "path": "/about-me" },
+        { "title": "_projects", "path": "/my-projects" },
+        { "title": "_skills", "path": "/my-skills" },
+        { "title": "_contact_me", "path": "/contact-me" }
+      ]
+    },
+    "footer": {
+      "find": "find me on:"
+    }
+  }
+}
