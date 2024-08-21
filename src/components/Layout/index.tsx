@@ -1,0 +1,22 @@
+import { ReactNode } from 'react';
+
+import Footer from './footer';
+import Header from './header';
+
+type LayoutPropsT = {
+  children: ReactNode;
+};
+
+function Layout({ children }: LayoutPropsT) {
+  return (
+    <>
+      <Header />
+      <main className='h-[calc(100dvh_-_7.5rem)] overflow-x-hidden overflow-y-scroll border-x border-line bg-surfacePrimary p-2 md:h-[calc(100dvh_-_9.5rem)] md:p-4 lg:h-[calc(100dvh_-_13.5rem)]'>
+        {children}
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+export default Layout;

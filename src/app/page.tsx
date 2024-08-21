@@ -1,3 +1,54 @@
 export default function Home() {
-  return <div className='flex h-full w-full items-center justify-center text-[#fff]'>hello</div>;
+  return (
+    <div className='flex flex-col items-center justify-center text-[#fff]'>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+      <span>helle</span>
+    </div>
+  );
 }
