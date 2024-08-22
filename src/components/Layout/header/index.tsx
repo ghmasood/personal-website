@@ -51,7 +51,7 @@ function Header() {
       <div
         onClick={() => setIsMenuOpen(false)}
         className={clsx(
-          'absolute end-0 start-0 top-[3.45rem] z-10 flex h-[calc(100dvh_-_7.5rem)] flex-col border-line bg-surfacePrimary duration-700 md:hidden',
+          'absolute end-0 start-0 top-[3.45rem] z-[100] flex h-[calc(100dvh_-_7.5rem)] flex-col border-line bg-surfacePrimary duration-700 md:hidden',
           isMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
       >
