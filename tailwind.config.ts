@@ -29,20 +29,33 @@ const config: Config = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       keyframes: {
-        cursor: {
+        blink: {
           '0%': {
             opacity: '0',
           },
+          '0.1%': {
+            opacity: '1',
+          },
           '50%': {
             opacity: '1',
+          },
+          '50.1%': {
+            opacity: '0',
           },
           '100%': {
             opacity: '0',
           },
         },
+        typewriter: {
+          to: {
+            left: '100%',
+          },
+        },
       },
       animation: {
         cursor: 'cursor 1s infinite',
+        typewriter: 'typewriter 3.5s steps(19) forwards',
+        caret: 'typewriter 3.5s steps(19) forwards, blink 1s steps(19) infinite 3.5s',
       },
     },
   },
