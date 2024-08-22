@@ -1,3 +1,4 @@
+@import './vars';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,9 +26,8 @@ body {
     Droid Sans,
     Helvetica Neue,
     sans-serif;
-  background-color: #010c15;
+  background-color: $background;
   padding: 0.5rem;
-  min-height: calc(100dvh_-_2rem);
   min-width: 320px;
 }
 
@@ -50,4 +50,17 @@ body {
   body {
     padding: 3rem !important;
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 2.75rem;
+  border-left: $line 1px solid;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border: 0.6rem solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  background-color: $i-primary;
 }
