@@ -20,7 +20,7 @@ export default function Home() {
             <span className='text-accent-blue'>const</span> <span className='text-accent-green'>githubLink</span>{' '}
             <span className='text-tPrimary'>=</span>{' '}
             <Link href={'https://github.com/ghmasood/personal-website'} className='text-accent-orange'>
-              “https://github.com/‌ghmasood/personal-website”
+              “https://github.com/‌ghmasood/‌personal-website”
             </Link>
           </div>
         </div>

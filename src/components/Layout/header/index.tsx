@@ -18,11 +18,12 @@ function Header() {
 
   return (
     <header className='relative flex h-14 items-center rounded-t-lg border border-line bg-surfacePrimary font-[450]'>
-      <span
-        className={`w-fit shrink-0 select-none border-line py-4 ps-2 align-middle text-tSecondary transition-colors duration-700 hover:text-tPrimary md:w-[13rem] md:border-e lg:w-[20rem] lg:ps-6`}
+      <div
+        className={`group relative shrink-0 select-none border-line px-2 py-4 align-middle text-tSecondary transition-colors duration-[3s] hover:text-tPrimary md:border-e lg:px-12`}
       >
-        {strings.layout.header.title}
-      </span>
+        <span className='relative z-[1]'>{strings.layout.header.title}</span>
+        <span className='absolute start-1 top-[1.125rem] h-5 w-5 rounded-full bg-tSecondary opacity-20 duration-[3s] group-hover:w-[12.25rem] group-hover:opacity-100 lg:start-10' />
+      </div>
       {strings.layout.header.menu.map((item, index) => (
         <Link
           href={item.path}
