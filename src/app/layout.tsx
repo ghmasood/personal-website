@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Fira_Code } from 'next/font/google';
 
-import Layout from 'components/Layout';
+import Layout from 'components/UI/Layout';
 
 import 'assets/styles/globals.scss';
 

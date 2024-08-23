@@ -16,6 +16,7 @@ function Header() {
 
   const pathName = usePathname();
 
+  //VARIABLES
   return (
     <header className='relative flex h-14 items-center rounded-t-lg border border-line bg-surfacePrimary font-[450]'>
       <div
@@ -24,25 +25,34 @@ function Header() {
         <span className='relative z-[1]'>{strings.layout.header.title}</span>
         <span className='absolute start-1 top-[1.125rem] h-5 w-5 rounded-full bg-tSecondary opacity-20 duration-[3s] group-hover:w-[12.25rem] group-hover:opacity-100 lg:start-10' />
       </div>
-      {strings.layout.header.menu.map((item, index) => (
-        <Link
-          href={item.path}
-          key={item.title}
-          className={clsx(
-            'relative hidden border-line py-4 duration-500 md:block',
-            index === strings.layout.header.menu.length - 1 ? 'ms-auto border-s px-2 lg:px-6' : 'border-e px-2 lg:px-4',
-            item.path === pathName ? 'text-tPrimary' : 'text-tSecondary hover:text-tPrimary/50'
-          )}
-        >
-          {item.title}
-          <div
+
+      {pathName === '/' ? (
+        <></>
+      ) : (
+        strings.layout.header.menu.map((item, index) => (
+          <Link
+            href={item.path}
+            key={item.title}
             className={clsx(
-              'absolute bottom-0 start-0 h-0.5 w-full bg-accent-orange duration-700',
-              item.path === pathName ? 'opacity-100' : 'opacity-0'
+              'relative hidden border-line py-4 duration-500 md:block',
+              index === strings.layout.header.menu.length - 1
+                ? 'ms-auto border-s px-2 lg:px-6'
+                : 'border-e px-2 lg:px-4',
+              item.path.includes(pathName.toString().split('/')[1])
+                ? 'text-tPrimary'
+                : 'text-tSecondary hover:text-tPrimary/50'
             )}
-          />
-        </Link>
-      ))}
+          >
+            {item.title}
+            <div
+              className={clsx(
+                'absolute bottom-0 start-0 h-0.5 w-full bg-accent-blue duration-700',
+                item.path.includes(pathName.toString().split('/')[1]) ? 'opacity-100' : 'opacity-0'
+              )}
+            />
+          </Link>
+        ))
+      )}
       <div
         className='ms-auto px-2 text-tSecondary hover:text-tPrimary active:text-tPrimary md:hidden'
         onClick={() => setIsMenuOpen((prev) => !prev)}

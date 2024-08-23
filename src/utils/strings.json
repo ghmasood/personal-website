@@ -3,8 +3,8 @@
     "header": {
       "title": "masoud-ghanbarzadeh",
       "menu": [
-        { "title": "_hello", "path": "/" },
-        { "title": "_about_me", "path": "/about-me" },
+        { "title": "_hello", "path": "/hello" },
+        { "title": "_about_me", "path": "/about-me/summery" },
         { "title": "_projects", "path": "/my-projects" },
         { "title": "_blogs", "path": "/blogs" },
         { "title": "_contact_me", "path": "/contact-me" }
