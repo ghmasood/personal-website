@@ -24,10 +24,10 @@ function CommentedText({ text = '' }: commentedTextT) {
   }, [textRef, textRef?.current?.offsetHeight]);
 
   return (
-    <div className={'flex text-pretty px-10 py-5 text-tSecondary'}>
+    <div className={'flex text-pretty px-4 py-2 text-tSecondary md:px-8 md:py-6'}>
       <div className='flex flex-col'>
         {[...new Array(lines + 1)].map((_, index) => (
-          <div className='flex self-end pe-9' key={index + 'number'}>
+          <div className='flex self-end pe-6' key={index + 'number'}>
             {index + 1}
           </div>
         ))}
