@@ -15,13 +15,13 @@ export default function AboutMe({
   const pathname = usePathname();
 
   return (
-    <div className='flex flex-col md:h-full md:flex-row'>
-      <div className='flex h-full flex-col gap-1 border-e border-line p-4 text-tSecondary'>
+    <div className='flex h-full flex-col md:flex-row'>
+      <div id='top-section' className='flex flex-col gap-0.5 border-e border-line p-2 text-tSecondary md:h-full md:p-4'>
         {util.map((item) => (
           <Link
             key={item.path}
             href={item.path}
-            className={`flex items-center text-sm duration-300 ${pathname === item.path ? 'rounded-md bg-accent-purple/10 py-1 font-[500] text-tPrimary' : 'font-[400]'}`}
+            className={`flex shrink-0 items-center text-nowrap text-sm duration-300 ${pathname === item.path ? 'rounded-md bg-accent-purple/10 py-0.5 font-[500] text-tPrimary' : 'font-[400]'}`}
           >
             <RiArrowRightSLine className={clsx('duration-500', pathname === item.path ? 'rotate-90' : '')} />
             {pathname !== item.path ? (
@@ -33,7 +33,12 @@ export default function AboutMe({
           </Link>
         ))}
       </div>
-      <div className='h-full w-full border-t border-line md:border-t-0 lg:w-1/2 lg:border-e'>{children}</div>
+      <div
+        id='bottom-section'
+        className='h-full w-full overflow-y-auto border-t border-line md:border-t-0 lg:w-1/2 lg:border-e'
+      >
+        {children}
+      </div>
       <div className='hidden h-full grow border-e border-line lg:block'>snippets</div>
     </div>
   );
