@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 
 type commentedTextT = {
   text: string;
+  id?: string;
+  title: string;
 };
 
-function CommentedText({ text = '' }: commentedTextT) {
+function CommentedText({ text, id = '', title }: commentedTextT) {
   // REF
   const textRef = useRef<HTMLDivElement>(null);
 
@@ -24,7 +26,7 @@ function CommentedText({ text = '' }: commentedTextT) {
   }, [textRef, textRef?.current?.offsetHeight]);
 
   return (
-    <div className={'flex text-pretty px-4 py-2 text-tSecondary md:px-8 md:py-6'}>
+    <div id={id} className={'flex text-pretty px-4 py-2 text-tSecondary md:px-8 md:py-6'}>
       <div className='flex flex-col'>
         {[...new Array(lines + 1)].map((_, index) => (
           <div className='flex self-end pe-6' key={index + 'number'}>
@@ -49,7 +51,7 @@ function CommentedText({ text = '' }: commentedTextT) {
       </div>
 
       <div ref={textRef} className='h-fit whitespace-pre-line'>
-        {`\n${text}`}
+        {`\n${title}\n${text}`}
       </div>
     </div>
   );

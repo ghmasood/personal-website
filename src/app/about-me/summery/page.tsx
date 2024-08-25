@@ -1,7 +1,7 @@
 import CommentedText from 'components/Pages/about/components/commentedText';
 
 function Summery() {
-  return <CommentedText text={`Summery\n${text}`} />;
+  return <CommentedText title='Summery' text={text} />;
 }
 
 export default Summery;
