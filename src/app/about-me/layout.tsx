@@ -55,7 +55,7 @@ export default function AboutMe({
       </div>
       <div
         id='bottom-section'
-        className='h-full w-full overflow-y-auto border-t border-line md:border-t-0 lg:w-1/2 lg:border-e'
+        className='h-full w-full overflow-y-auto scroll-smooth border-t border-line md:border-t-0 lg:w-1/2 lg:border-e'
       >
         {children}
       </div>

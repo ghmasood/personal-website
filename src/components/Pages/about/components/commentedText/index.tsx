@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 type commentedTextT = {
-  text: string;
+  text: ReactNode | string;
   id?: string;
   title: string;
 };
@@ -51,7 +51,8 @@ function CommentedText({ text, id = '', title }: commentedTextT) {
       </div>
 
       <div ref={textRef} className='h-fit whitespace-pre-line'>
-        {`\n${title}\n${text}`}
+        <h3 className='font-[650]'>{`\n${title}\n`}</h3>
+        {text}
       </div>
     </div>
   );
