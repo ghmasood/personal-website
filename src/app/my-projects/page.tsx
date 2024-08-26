@@ -14,7 +14,7 @@ export default async function MyProjects() {
       {data.map((repo) => (
         <div
           key={repo.id}
-          className='group relative flex basis-full flex-col justify-between gap-3 overflow-hidden rounded-md border border-line bg-surfaceSecondary p-3 duration-1000 hover:scale-[1.01] lg:lg:basis-[calc((100%_-_1.5rem)/2)] xl:basis-[calc((100%_-_3rem)/3)] min-[1800px]:basis-[calc((100%_-_4.5rem)/4)]'
+          className='group relative flex basis-full flex-col justify-between gap-3 overflow-hidden rounded-md border border-line bg-surfaceSecondary p-3 duration-[2s] hover:scale-[1.005] lg:lg:basis-[calc((100%_-_1.5rem)/2)] xl:basis-[calc((100%_-_3rem)/3)] min-[1800px]:basis-[calc((100%_-_4.5rem)/4)]'
         >
           <div className='flex items-center justify-between gap-1'>
             <Link href={repo.html_url} target='_blank'>
@@ -34,7 +34,7 @@ export default async function MyProjects() {
               Updated {DateTime.fromISO(repo?.updated_at ?? '').toRelative()}
             </span>
           </div>
-          <span className='absolute bottom-0 start-0 h-1 w-0 bg-accent-blue/80 duration-[1.5s] group-hover:w-full' />
+          <span className='absolute bottom-0 start-0 h-1 w-0 bg-accent-blue/80 duration-[3s] group-hover:w-full' />
         </div>
       ))}
     </div>
