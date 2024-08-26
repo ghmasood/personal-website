@@ -1,3 +1,5 @@
+import { NextUIProvider } from '@nextui-org/system';
+
 import type { Metadata } from 'next';
 import { Fira_Code } from 'next/font/google';
 
@@ -20,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang='en' dir='ltr'>
       <body className={fira.className}>
-        <Layout>{children}</Layout>
+        <NextUIProvider>
+          <Layout>{children}</Layout>
+        </NextUIProvider>
       </body>
     </html>
   );

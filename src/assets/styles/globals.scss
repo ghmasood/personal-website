@@ -8,7 +8,9 @@
     text-wrap: balance;
   }
 }
-
+:root {
+  background-color: $background;
+}
 html,
 body {
   scroll-behavior: smooth;
