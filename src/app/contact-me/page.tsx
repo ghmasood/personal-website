@@ -4,8 +4,21 @@ import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '@nextui-org/button';
 import { Input, Textarea } from '@nextui-org/input';
+import {
+  RiArrowRightSLine,
+  RiGithubFill,
+  RiInstagramFill,
+  RiLinkedinBoxFill,
+  RiMailFill,
+  RiPhoneFill,
+  RiTelegramFill,
+  RiTwitterXFill,
+  RiWhatsappFill,
+  RiYoutubeFill,
+} from '@remixicon/react';
 
 import { DateTime } from 'luxon';
+import Link from 'next/link';
 
 export default function ContactMe() {
   //STATES
@@ -31,8 +44,64 @@ export default function ContactMe() {
   }, [textRef, textRef?.current?.offsetHeight]);
 
   return (
-    <div className='flex h-full'>
-      <div className='w-[279px] shrink-0 border-e border-line'>a</div>
+    <div className='flex h-full flex-col gap-3 md:flex-row md:gap-0'>
+      <div className='flex shrink-0 flex-col gap-2 border-b border-line p-3 md:w-[279.5px] md:border-e'>
+        <div className='flex flex-col gap-2 text-tPrimary'>
+          <div className='flex items-center gap-0.5'>
+            <RiArrowRightSLine />
+            <span>contacts</span>
+          </div>
+          <div className='flex flex-col gap-2 ps-5 text-sm text-tSecondary'>
+            <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='tel:+989303939330'>
+              <RiPhoneFill size={'1.25rem'} />
+              +98 930 39 39 330
+            </Link>
+            <Link
+              className='flex items-center gap-2 duration-400 hover:text-tPrimary/50'
+              href='mailto:gh.masoud97@yahoo.com'
+            >
+              <RiMailFill size={'1.25rem'} />
+              gh.masoud97@yahoo.com
+            </Link>
+          </div>
+        </div>
+        <div className='flex flex-col gap-2 text-tPrimary'>
+          <div className='flex items-center gap-0.5'>
+            <RiArrowRightSLine />
+            <span>find-me-also-in</span>
+          </div>
+          <div className='flex flex-col gap-2 ps-5 text-sm text-tSecondary'>
+            <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+              <RiLinkedinBoxFill size={'1.25rem'} />
+              Linkedin
+            </Link>
+            <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+              <RiGithubFill size={'1.25rem'} />
+              github
+            </Link>
+            <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+              <RiInstagramFill size={'1.25rem'} />
+              instagram
+            </Link>
+            <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+              <RiYoutubeFill size={'1.25rem'} />
+              youtube
+            </Link>
+            <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+              <RiTwitterXFill size={'1.25rem'} />
+              Twitter
+            </Link>
+            <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+              <RiWhatsappFill size={'1.25rem'} />
+              Whatsapp
+            </Link>
+            <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+              <RiTelegramFill size={'1.25rem'} />
+              Telegram
+            </Link>
+          </div>
+        </div>
+      </div>
       <div className='flex w-full flex-col items-center justify-center gap-5 border-line xl:w-[40%] xl:border-e'>
         <form className='flex w-[70%] flex-col gap-3'>
           <Input
