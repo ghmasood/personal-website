@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function AboutMe({
+export default function AboutMeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
