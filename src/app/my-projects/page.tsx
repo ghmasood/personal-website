@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { ReposList } from 'types';
 
 export default async function MyProjects() {
-  const res = await fetch('https://api.github.com/users/ghmasood/repos?sort=upded&direction=desc', {});
+  const res = await fetch('https://api.github.com/users/ghmasood/repos?sort=upded&direction=desc', {
+    cache: 'no-store',
+  });
   const data = (await res.json()) as ReposList;
 
   return (
