@@ -1,7 +1,7 @@
 import { Button } from '@nextui-org/button';
 import { Input, Textarea } from '@nextui-org/input';
 
-import { formDataType } from 'app/contact-me/page';
+import { formDataType } from 'app/[lang]/contact-me/page';
 
 type formDataProps = {
   formData: formDataType;

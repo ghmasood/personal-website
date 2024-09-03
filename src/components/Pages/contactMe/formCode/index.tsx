@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { formDataType } from 'app/contact-me/page';
+import { formDataType } from 'app/[lang]/contact-me/page';
 import { DateTime } from 'luxon';
 
 type formCodeProps = {

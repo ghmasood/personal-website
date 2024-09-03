@@ -239,33 +239,33 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
   }, [turn, snake, direction, points, fruit, gameOver, firstStart, setPoints]);
 
   return (
-    <div
-      className='relative flex flex-wrap !bg-surfacePrimary/85'
-      style={{ width: containerWidth, height: containerWidth * 1.5 }}
-    >
-      {pieces().map((piece, i) => {
-        return (
-          <div
-            key={'piece' + i}
-            className={clsx([
-              piece === 'fruit' && 'rounded-full bg-accent-green shadow-[0_0_8px_rgba(67,217,173,0.8)]',
-              piece.includes('bang') && 'bg-accent-green',
-              piece === `bang$${snake[0].part[0]}`
-                ? direction === 'up'
-                  ? 'rounded-t-full'
-                  : direction === 'right'
-                    ? 'rounded-r-full'
-                    : direction === 'down'
-                      ? 'rounded-b-full'
-                      : direction === 'left'
-                        ? 'rounded-l-full'
-                        : ''
-                : '',
-            ])}
-            style={{ width: chunk, height: chunk }}
-          />
-        );
-      })}
+    <div className='relative !bg-surfacePrimary/85'>
+      <div className='flex flex-wrap' dir='ltr' style={{ width: containerWidth, height: containerWidth * 1.5 }}>
+        {pieces().map((piece, i) => {
+          return (
+            <div
+              key={'piece' + i}
+              className={clsx([
+                '',
+                piece === 'fruit' && 'rounded-full bg-accent-green shadow-[0_0_8px_rgba(67,217,173,0.8)]',
+                piece.includes('bang') && 'bg-accent-green',
+                piece === `bang$${snake[0].part[0]}`
+                  ? direction === 'up'
+                    ? 'rounded-t-full'
+                    : direction === 'right'
+                      ? 'rounded-r-full'
+                      : direction === 'down'
+                        ? 'rounded-b-full'
+                        : direction === 'left'
+                          ? 'rounded-l-full'
+                          : ''
+                  : '',
+              ])}
+              style={{ width: chunk, height: chunk }}
+            />
+          );
+        })}
+      </div>
       {gameOver && (
         <div
           className='absolute inset-0 z-[2] flex min-h-full w-full flex-col items-center justify-end gap-4 bg-surfacePrimary/75 pb-8 backdrop-blur'

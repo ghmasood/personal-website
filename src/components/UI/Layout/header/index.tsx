@@ -31,7 +31,7 @@ function Header() {
       ) : (
         strings.layout.header.menu.map((item, index) => (
           <Link
-            href={item.path}
+            href={`/${pathName.split('/')[1]}${item.path}`}
             key={item.title}
             className={clsx(
               'relative hidden border-line py-4 duration-500 md:block',
@@ -47,7 +47,7 @@ function Header() {
             <div
               className={clsx(
                 'absolute bottom-0 start-0 h-0.5 w-full bg-accent-blue duration-700',
-                item.path.includes(pathName.toString().split('/')[1]) ? 'opacity-100' : 'opacity-0'
+                item.path.includes(pathName.toString().split('/')[2]) ? 'opacity-100' : 'opacity-0'
               )}
             />
           </Link>

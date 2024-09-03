@@ -13,6 +13,20 @@ export default function AboutMeLayout({
 }>) {
   //PATHNAME HOOK
   const pathname = usePathname();
+  const lang = pathname.split('/')[1];
+
+  const util = [
+    { path: `/${lang}/about-me/summery`, label: 'Summery', sub: ['index'] },
+    { path: `/${lang}/about-me/experience`, label: 'Experience', sub: ['IroTeam', 'Wallex Exchange'] },
+    { path: `/${lang}/about-me/education`, label: 'Education', sub: ['Bachelor', 'Diploma'] },
+    { path: `/${lang}/about-me/certifications`, label: 'Certifications', sub: ['index'] },
+    {
+      path: `/${lang}/about-me/technical-skills`,
+      label: 'Technical Skills',
+      sub: ['Frontend Core', 'Frameworks & Libraries', 'Styling & UI', 'Tools & version control'],
+    },
+    { path: `/${lang}/about-me/languages`, label: 'Languages', sub: ['Persian', 'English'] },
+  ];
 
   return (
     <div className='flex h-full flex-col md:flex-row'>
@@ -23,18 +37,18 @@ export default function AboutMeLayout({
               href={item.path}
               className={`flex shrink-0 items-center text-nowrap text-sm duration-300 ${pathname === item.path ? 'rounded-md py-0.5 font-[500] text-tPrimary' : 'font-[400]'}`}
             >
-              <RiArrowRightSLine className={clsx('duration-500', pathname === item.path ? 'rotate-90' : '')} />
-              {pathname !== item.path ? (
-                <RiFolder3Fill className='me-1 text-accent-orange' size={'1.25rem'} />
-              ) : (
+              <RiArrowRightSLine className={clsx('duration-500', pathname.includes(item.path) ? 'rotate-90' : '')} />
+              {pathname.includes(item.path) ? (
                 <RiFolderOpenFill className='me-1' size={'1.25rem'} />
+              ) : (
+                <RiFolder3Fill className='me-1 text-accent-orange' size={'1.25rem'} />
               )}
               <span className='self-end pe-2'>{item.label}</span>
             </Link>
             <div
               className={clsx(
                 'flex flex-col gap-0.5 overflow-hidden truncate transition-all duration-500',
-                pathname === item.path
+                pathname.includes(item.path)
                   ? item.sub.length === 1
                     ? 'h-6'
                     : item.sub.length === 2
@@ -63,16 +77,3 @@ export default function AboutMeLayout({
     </div>
   );
 }
-
-const util = [
-  { path: '/about-me/summery', label: 'Summery', sub: ['index'] },
-  { path: '/about-me/experience', label: 'Experience', sub: ['IroTeam', 'Wallex Exchange'] },
-  { path: '/about-me/education', label: 'Education', sub: ['Bachelor', 'Diploma'] },
-  { path: '/about-me/certifications', label: 'Certifications', sub: ['index'] },
-  {
-    path: '/about-me/technical-skills',
-    label: 'Technical Skills',
-    sub: ['Frontend Core', 'Frameworks & Libraries', 'Styling & UI', 'Tools & version control'],
-  },
-  { path: '/about-me/languages', label: 'Languages', sub: ['Persian', 'English'] },
-];
