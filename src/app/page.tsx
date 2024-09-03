@@ -15,7 +15,7 @@ export default function Splash() {
 
   return (
     <div className='mx-auto flex h-full w-1/2 items-center justify-center'>
-      <span className='loader'></span>
+      <span className='loader' />
     </div>
   );
 }

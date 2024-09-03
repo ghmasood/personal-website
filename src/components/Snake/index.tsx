@@ -2,6 +2,8 @@
 
 import React, { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
 
+import { Button } from '@nextui-org/button';
+
 import clsx from 'clsx';
 
 type Props = {
@@ -19,8 +21,9 @@ type SnakeT = {
 const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
   //STATES
   const [direction, setDirection] = useState<DirectionT>('right');
-  const [fruit, setFruit] = useState<number>(466);
-  const [gameOver, setGameOver] = useState<boolean>(false);
+  const [fruit, setFruit] = useState<number>(222);
+  const [gameOver, setGameOver] = useState(false);
+  const [firstStart, setFirstStart] = useState(true);
   const [snake, setSnake] = useState<SnakeT[]>([
     {
       direction: 'right',
@@ -31,7 +34,7 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
   //REFS
   const speedRef = useRef(60);
   // VARIABLES
-  const chunk = containerWidth / 30;
+  const chunk = containerWidth / 20;
 
   const reset = () => {
     speedRef.current = 60;
@@ -50,7 +53,7 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
   type Bang = `bang$${number}`;
   const pieces = (): (Bang | 'fruit' | '')[] => {
     const arr: (Bang | 'fruit' | '')[] = [];
-    for (let i = 0; i < 1800; i++) {
+    for (let i = 0; i < 600; i++) {
       let addToArr: boolean = false;
       let j = 0;
       while (j < snake.length) {
@@ -96,49 +99,52 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
       const sneak = [...snake];
       const firstSection = sneak[0];
       if (firstSection.direction === 'up') {
-        const y = firstSection.part[0] - 30;
+        const y = firstSection.part[0] - 20;
         if (y < 0) {
-          firstSection.part.unshift(y + 1800);
+          firstSection.part.unshift(y + 600);
         } else {
           firstSection.part.unshift(y);
         }
       } else if (firstSection.direction === 'right') {
         const y = firstSection.part[0] + 1;
-        if (y % 30 === 0) {
-          firstSection.part.unshift(y + -30);
+        if (y % 20 === 0) {
+          firstSection.part.unshift(y + -20);
         } else {
           firstSection.part.unshift(y);
         }
       } else if (firstSection.direction === 'down') {
-        const y = firstSection.part[0] + 30;
-        if (y >= 1800) {
-          firstSection.part.unshift(y - 1800);
+        const y = firstSection.part[0] + 20;
+        if (y >= 600) {
+          firstSection.part.unshift(y - 600);
         } else {
           firstSection.part.unshift(y);
         }
       } else if (firstSection.direction === 'left') {
         const y = firstSection.part[0] - 1;
-        if (y % 30 === 29) {
-          firstSection.part.unshift(y + 30);
+        if (y % 20 === 19) {
+          firstSection.part.unshift(y + 20);
         } else {
           firstSection.part.unshift(y);
         }
       }
       speedRef.current = speedRef.current - 1;
       setSnake(sneak);
-      setFruit(Math.floor(Math.random() * Math.floor(1800)));
+      setFruit(Math.floor(Math.random() * Math.floor(600)));
     }
 
-    //gameover if you eat your tail
+    //game over if you eat your tail
     let totalArr: number[] = [];
     for (let k = 0; k < snake.length; k++) {
       totalArr = [...totalArr, ...snake[k].part];
     }
     const head = snake[0].part[0];
-    if (totalArr.filter((item) => item === head).length >= 2) setGameOver(true);
+    if (totalArr.filter((item) => item === head).length >= 2) {
+      localStorage.setItem('highScore', points.toString());
+      setGameOver(true);
+    }
 
-    if (!gameOver) {
-      //if GAMEOVER pause events
+    if (!gameOver && !firstStart) {
+      //if GAME OVER pause events
 
       //listen for directions and update snake instructions accordingly
       const handleKeydown = (e: KeyboardEvent) => {
@@ -185,17 +191,17 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
           if (section.direction === 'right') {
             section.part.map((x: number, i: number) => {
               const y = x + 1;
-              if (y % 30 === 0) {
-                return (section.part[i] = y - 30);
+              if (y % 20 === 0) {
+                return (section.part[i] = y - 20);
               } else {
                 return (section.part[i] = y);
               }
             });
           } else if (section.direction === 'up') {
             section.part.map((x: number, i: number) => {
-              const y = x - 30;
+              const y = x - 20;
               if (y < 0) {
-                return (section.part[i] = y + 1800);
+                return (section.part[i] = y + 600);
               } else {
                 return (section.part[i] = y);
               }
@@ -203,17 +209,17 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
           } else if (section.direction === 'left') {
             section.part.map((x: number, i: number) => {
               const y = x - 1;
-              if (y % 30 === -1 || y % 30 === 29) {
-                return (section.part[i] = y + 30);
+              if (y % 20 === -1 || y % 20 === 19) {
+                return (section.part[i] = y + 20);
               } else {
                 return (section.part[i] = y);
               }
             });
           } else if (section.direction === 'down') {
             section.part.map((x: number, i: number) => {
-              const y = x + 30;
-              if (y >= 1800) {
-                return (section.part[i] = y - 1800);
+              const y = x + 20;
+              if (y >= 600) {
+                return (section.part[i] = y - 600);
               } else {
                 return (section.part[i] = y);
               }
@@ -230,12 +236,12 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
         document.removeEventListener('keydown', handleKeydown);
       };
     }
-  }, [turn, snake, direction, points, fruit, gameOver]);
+  }, [turn, snake, direction, points, fruit, gameOver, firstStart, setPoints]);
 
   return (
     <div
-      className='relative flex flex-wrap !bg-surfacePrimary/50'
-      style={{ width: containerWidth, height: containerWidth * 2 }}
+      className='relative flex flex-wrap !bg-surfacePrimary/85'
+      style={{ width: containerWidth, height: containerWidth * 1.5 }}
     >
       {pieces().map((piece, i) => {
         return (
@@ -262,15 +268,33 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
       })}
       {gameOver && (
         <div
-          className='absolute inset-0 z-[2] flex h-full w-full flex-col items-center justify-center gap-4 bg-surfacePrimary/75 text-tPrimary backdrop-blur-sm'
+          className='absolute inset-0 z-[2] flex min-h-full w-full flex-col items-center justify-end gap-4 bg-surfacePrimary/75 pb-8 backdrop-blur'
           style={{ height: containerWidth }}
         >
-          <div>Game Over!</div>
-          <button onClick={() => reset()}>Play Again</button>
+          <div className='w-full bg-surfacePrimary py-1 text-center text-xl text-accent-green shadow-[inset_1px_5px_11px_0px_rgba(2,18,27,0.71)]'>
+            GAME OVER!
+          </div>
+          <span className='cursor-pointer text-sm text-tSecondary duration-500 hover:text-tPrimary/50' onClick={reset}>
+            play-again
+          </span>
+        </div>
+      )}
+      {firstStart && (
+        <div
+          className='absolute inset-0 z-[2] flex min-h-full w-full flex-col items-center justify-end gap-4 bg-surfacePrimary/35 pb-8'
+          style={{ height: containerWidth }}
+        >
+          <Button
+            size='sm'
+            className='cursor-pointer rounded-lg bg-accent-orange text-sm text-tPrimary duration-500'
+            onClick={() => setFirstStart(false)}
+          >
+            start-game
+          </Button>
         </div>
       )}
     </div>
   );
 };
 
-export default Snake;
+export default React.memo(Snake);
