@@ -1,11 +1,15 @@
-import React from 'react';
+'use client';
 
-import Snake from 'components/Snake/Snake';
+import { useState } from 'react';
+
+import Snake from 'components/Snake';
 
 function SnakeTestPage() {
+  const [score, setScore] = useState(0);
   return (
-    <div className='flex max-h-full w-full items-center justify-center'>
-      <Snake color1={'green'} color2={'red'} backgroundColor={'transparent'} />
+    <div className='flex flex-col items-center justify-center p-5'>
+      <div className='text-tPrimary'>{score}</div>
+      <Snake points={score} setPoints={setScore} containerWidth={200} />
     </div>
   );
 }

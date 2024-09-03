@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
 
-import './Snake.css';
+import clsx from 'clsx';
 
 type Props = {
-  color1: string;
-  color2: string;
-  backgroundColor: string;
+  points: number;
+  setPoints: Dispatch<SetStateAction<number>>;
+  containerWidth: number;
 };
 
 type DirectionT = 'up' | 'right' | 'down' | 'left';
@@ -16,15 +16,11 @@ type SnakeT = {
   part: number[];
 };
 
-const Snake: React.FC<Props> = (props) => {
-  const [dim, setDim] = useState<number>(0);
-  const [chunk, setChunk] = useState<number>(0);
+const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
+  //STATES
   const [direction, setDirection] = useState<DirectionT>('right');
-  const [fruit, setFruit] = useState<number>(26);
-  const [points, setPoints] = useState<number>(0);
-  const [game, setGame] = useState<boolean>(false);
-  const width = typeof window !== 'undefined' ? window.innerWidth : 0;
-  const speedRef = useRef(110);
+  const [fruit, setFruit] = useState<number>(466);
+  const [gameOver, setGameOver] = useState<boolean>(false);
   const [snake, setSnake] = useState<SnakeT[]>([
     {
       direction: 'right',
@@ -32,8 +28,13 @@ const Snake: React.FC<Props> = (props) => {
     },
   ]);
 
+  //REFS
+  const speedRef = useRef(60);
+  // VARIABLES
+  const chunk = containerWidth / 30;
+
   const reset = () => {
-    speedRef.current = 100;
+    speedRef.current = 60;
     setPoints(0);
     setDirection('right');
     setSnake([
@@ -42,13 +43,14 @@ const Snake: React.FC<Props> = (props) => {
         part: [186, 185, 184, 183],
       },
     ]);
-    setGame(false);
+    setGameOver(false);
   };
 
-  const pieces = (): ('bang' | 'fruit' | '')[] => {
-    //functionally label snake pieces (bang) and return
-    const arr: ('bang' | 'fruit' | '')[] = [];
-    for (let i = 0; i < 400; i++) {
+  //functionally label snake pieces (bang) and return
+  type Bang = `bang$${number}`;
+  const pieces = (): (Bang | 'fruit' | '')[] => {
+    const arr: (Bang | 'fruit' | '')[] = [];
+    for (let i = 0; i < 1800; i++) {
       let addToArr: boolean = false;
       let j = 0;
       while (j < snake.length) {
@@ -61,7 +63,7 @@ const Snake: React.FC<Props> = (props) => {
         j++;
       }
       if (addToArr) {
-        arr.push('bang');
+        arr.push(`bang$${i}`);
       } else if (i === fruit) {
         arr.push('fruit');
       } else {
@@ -70,9 +72,10 @@ const Snake: React.FC<Props> = (props) => {
     }
     return arr;
   };
+
   //handle direction changes
   const turn = useCallback(
-    (dir: DirectionT, opp: string) => {
+    (dir: DirectionT, opp: DirectionT) => {
       const tempSnake = [...snake];
       if (direction !== opp && direction !== dir) {
         setDirection(dir);
@@ -87,51 +90,43 @@ const Snake: React.FC<Props> = (props) => {
   );
 
   useEffect(() => {
-    //determine relative dimensions of game portal
-    if (width >= 800) {
-      setDim(width * 0.35);
-    } else if (width < 800) {
-      setDim(width * 0.9);
-    }
-    setChunk(dim / 20);
-
     //points and get longer after eating
     if (snake[0].part[0] === fruit) {
-      setPoints(points + 1);
+      setPoints((prev) => prev + 1);
       const sneak = [...snake];
       const firstSection = sneak[0];
       if (firstSection.direction === 'up') {
-        const y = firstSection.part[0] - 20;
+        const y = firstSection.part[0] - 30;
         if (y < 0) {
-          firstSection.part.unshift(y + 400);
+          firstSection.part.unshift(y + 1800);
         } else {
           firstSection.part.unshift(y);
         }
       } else if (firstSection.direction === 'right') {
         const y = firstSection.part[0] + 1;
-        if (y % 20 === 0) {
-          firstSection.part.unshift(y + -20);
+        if (y % 30 === 0) {
+          firstSection.part.unshift(y + -30);
         } else {
           firstSection.part.unshift(y);
         }
       } else if (firstSection.direction === 'down') {
-        const y = firstSection.part[0] + 20;
-        if (y >= 400) {
-          firstSection.part.unshift(y - 400);
+        const y = firstSection.part[0] + 30;
+        if (y >= 1800) {
+          firstSection.part.unshift(y - 1800);
         } else {
           firstSection.part.unshift(y);
         }
       } else if (firstSection.direction === 'left') {
         const y = firstSection.part[0] - 1;
-        if (y % 20 === 19) {
-          firstSection.part.unshift(y + 20);
+        if (y % 30 === 29) {
+          firstSection.part.unshift(y + 30);
         } else {
           firstSection.part.unshift(y);
         }
       }
-      speedRef.current = speedRef.current - 2;
+      speedRef.current = speedRef.current - 1;
       setSnake(sneak);
-      setFruit(Math.floor(Math.random() * Math.floor(400)));
+      setFruit(Math.floor(Math.random() * Math.floor(1800)));
     }
 
     //gameover if you eat your tail
@@ -140,14 +135,13 @@ const Snake: React.FC<Props> = (props) => {
       totalArr = [...totalArr, ...snake[k].part];
     }
     const head = snake[0].part[0];
-    if (totalArr.filter((item) => item === head).length >= 2) setGame(true);
+    if (totalArr.filter((item) => item === head).length >= 2) setGameOver(true);
 
-    if (!game) {
+    if (!gameOver) {
       //if GAMEOVER pause events
 
       //listen for directions and update snake instructions accordingly
       const handleKeydown = (e: KeyboardEvent) => {
-        //let tempSnake: any = [...snake];
         switch (e.code) {
           case 'ArrowUp':
             e.preventDefault();
@@ -191,17 +185,17 @@ const Snake: React.FC<Props> = (props) => {
           if (section.direction === 'right') {
             section.part.map((x: number, i: number) => {
               const y = x + 1;
-              if (y % 20 === 0) {
-                return (section.part[i] = y - 20);
+              if (y % 30 === 0) {
+                return (section.part[i] = y - 30);
               } else {
                 return (section.part[i] = y);
               }
             });
           } else if (section.direction === 'up') {
             section.part.map((x: number, i: number) => {
-              const y = x - 20;
+              const y = x - 30;
               if (y < 0) {
-                return (section.part[i] = y + 400);
+                return (section.part[i] = y + 1800);
               } else {
                 return (section.part[i] = y);
               }
@@ -209,17 +203,17 @@ const Snake: React.FC<Props> = (props) => {
           } else if (section.direction === 'left') {
             section.part.map((x: number, i: number) => {
               const y = x - 1;
-              if (y % 20 === 19) {
-                return (section.part[i] = y + 20);
+              if (y % 30 === -1 || y % 30 === 29) {
+                return (section.part[i] = y + 30);
               } else {
                 return (section.part[i] = y);
               }
             });
           } else if (section.direction === 'down') {
             section.part.map((x: number, i: number) => {
-              const y = x + 20;
-              if (y >= 400) {
-                return (section.part[i] = y - 400);
+              const y = x + 30;
+              if (y >= 1800) {
+                return (section.part[i] = y - 1800);
               } else {
                 return (section.part[i] = y);
               }
@@ -236,47 +230,43 @@ const Snake: React.FC<Props> = (props) => {
         document.removeEventListener('keydown', handleKeydown);
       };
     }
-  }, [turn, width, dim, chunk, snake, direction, points, fruit, game]);
+  }, [turn, snake, direction, points, fruit, gameOver]);
 
   return (
-    <div className='snake-container' id='snake-container'>
-      <div className='game-border' style={{ width: dim, height: dim, backgroundColor: props.backgroundColor }}>
-        {pieces().map((piece, i) => {
-          return (
-            <div
-              key={'piece' + i}
-              style={
-                piece === 'bang'
-                  ? { width: chunk, height: chunk, backgroundColor: props.color1 }
-                  : piece === 'fruit'
-                    ? { width: chunk, height: chunk, backgroundColor: props.color2 }
-                    : { width: chunk, height: chunk }
-              }
-            />
-          );
-        })}
-        {game && (
-          <div className='game-splash' style={{ height: dim }}>
-            <div>Game Over!</div>
-            <button onClick={() => reset()}>Play Again</button>
-          </div>
-        )}
-      </div>
-      <div className='point-bar' style={{ width: dim }}>
-        <div style={{ color: props.color2 }}>Score: {points}</div>
-      </div>
-      {width <= 1024 && (
-        <div className='snake-mobile-buttons' style={{ width: dim, margin: 'auto' }}>
-          <div>
-            <button onClick={() => turn('up', 'down')}>&#8593;</button>
-          </div>
-          <div>
-            <button onClick={() => turn('left', 'right')}>&#8592;</button>
-            <button onClick={() => turn('right', 'left')}>&#8594;</button>
-          </div>
-          <div>
-            <button onClick={() => turn('down', 'up')}>&#8595;</button>
-          </div>
+    <div
+      className='relative flex flex-wrap !bg-surfacePrimary/50'
+      style={{ width: containerWidth, height: containerWidth * 2 }}
+    >
+      {pieces().map((piece, i) => {
+        return (
+          <div
+            key={'piece' + i}
+            className={clsx([
+              piece === 'fruit' && 'rounded-full bg-accent-green shadow-[0_0_8px_rgba(67,217,173,0.8)]',
+              piece.includes('bang') && 'bg-accent-green',
+              piece === `bang$${snake[0].part[0]}`
+                ? direction === 'up'
+                  ? 'rounded-t-full'
+                  : direction === 'right'
+                    ? 'rounded-r-full'
+                    : direction === 'down'
+                      ? 'rounded-b-full'
+                      : direction === 'left'
+                        ? 'rounded-l-full'
+                        : ''
+                : '',
+            ])}
+            style={{ width: chunk, height: chunk }}
+          />
+        );
+      })}
+      {gameOver && (
+        <div
+          className='absolute inset-0 z-[2] flex h-full w-full flex-col items-center justify-center gap-4 bg-surfacePrimary/75 text-tPrimary backdrop-blur-sm'
+          style={{ height: containerWidth }}
+        >
+          <div>Game Over!</div>
+          <button onClick={() => reset()}>Play Again</button>
         </div>
       )}
     </div>
