@@ -1,4 +1,4 @@
-import { getDictionary } from 'dictionaries/dictionaries';
+import { useGetDictionary } from 'locale/dictionaries';
 import dynamic from 'next/dynamic';
 
 import IntroSection from 'components/Pages/hello/introSection';
@@ -12,11 +12,11 @@ const SnakeSection = dynamic(() => import('components/Pages/hello/snakeSection')
 });
 
 export default async function Home({ params: { lang } }: { params: { lang: LangsT } }) {
-  const dict = await getDictionary(lang);
-  console.log(dict);
+  const dict = await useGetDictionary(lang);
+
   return (
     <div className='relative flex h-full items-center justify-evenly gap-5 px-10'>
-      <IntroSection />
+      <IntroSection locale={dict.helloPage} />
       <SnakeSection className='hidden lg:block' />
 
       {/* absolute shadows */}

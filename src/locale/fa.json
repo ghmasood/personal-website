@@ -1,0 +1,32 @@
+{
+  "layout": {
+    "title": "مسعود قنبرزاده",
+    "hello": "سلام",
+    "about": "درباره من",
+    "projects": "پروژه‌ها",
+    "blog": "وبلاگ‌ها",
+    "contact": "تماس با من",
+    "downloadCV": "دانلود رزومه من"
+  },
+  "helloPage": {
+    "hiAll": "سلام به همه، من",
+    "name": "مسعود قنبرزاده",
+    "position": "توسعه‌دهنده فرانت‌اند",
+    "completeGame": "// بازی را تکمیل کنید تا ادامه دهید",
+    "seeGit": "// همچنین می‌توانید آن را در صفحه گیت‌هاب من ببینید"
+  },
+
+  "aboutPage": {
+    "summery": { "title": "خلاصه", "sub": ["index.md"] },
+    "experience": { "title": "تجربه", "sub": ["IroTeam.md", "Wallex Exchange.md"] },
+    "education": { "title": "تحصیلات", "sub": ["Bachelor.md", "Diploma.md"] },
+    "certification": { "title": "گواهینامه‌ها", "sub": ["index.md"] },
+    "techSkills": {
+      "title": "مهارت‌های فنی",
+      "sub": ["Frontend Core.md", "Frameworks & Libraries.md", "Styling & UI.md", "Tools & version Control.md"]
+    },
+    "langs": { "title": "زبان‌ها", "sub": ["English.md", "Persian.md"] }
+  },
+
+  "contactPage": { "name": "نام", "email": "ایمیل", "message": "پیام", "submit": "ارسال" }
+}

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: 'my personal website as front-end developer',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: Readonly<{
@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang={params.lang} dir={params.lang === 'fa' ? 'rtl' : 'ltr'}>
       <body className={fira.className}>
         <NextUIProvider>
-          <Layout>{children}</Layout>
+          <Layout lang={params.lang}>{children}</Layout>
         </NextUIProvider>
       </body>
     </html>

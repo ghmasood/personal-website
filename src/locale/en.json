@@ -1,0 +1,32 @@
+{
+  "layout": {
+    "title": "masoud-ghanbarzadeh",
+    "hello": "_hello",
+    "about": "_about_me",
+    "projects": "_projects",
+    "blog": "_blogs",
+    "contact": "_contact_me",
+    "downloadCV": "download my cv"
+  },
+  "helloPage": {
+    "hiAll": "Hi all. I am",
+    "name": "Masoud Ghanbarzadeh",
+    "position": "front-end developer",
+    "completeGame": "// complete the game to continue",
+    "seeGit": "// you can also see it on my Github page"
+  },
+
+  "aboutPage": {
+    "summery": { "title": "Summary", "sub": ["index.md"] },
+    "experience": { "title": "Experience", "sub": ["IroTeam.md", "Wallex Exchange.md"] },
+    "education": { "title": "Education", "sub": ["Bachelor.md", "Diploma.md"] },
+    "certification": { "title": "Certification", "sub": ["index.md"] },
+    "techSkills": {
+      "title": "Technical Skills",
+      "sub": ["Frontend Core.md", "Frameworks & Libraries.md", "Styling & UI.md", "Tools & version Control.md"]
+    },
+    "langs": { "title": "Languages", "sub": ["English.md", "Persian.md"] }
+  },
+
+  "contactPage": { "name": "_name", "email": "_email", "message": "_message", "submit": "Submit" }
+}

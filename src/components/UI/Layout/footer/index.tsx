@@ -3,10 +3,11 @@
 import { RiDownload2Fill, RiGithubFill } from '@remixicon/react';
 
 import type { LangsT } from 'app/[lang]/layout';
+import type { DictT } from 'locale/dictionaries';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
 
-function Footer() {
+function Footer({ locale }: { locale: DictT['layout'] }) {
   const lang = useParams().lang as LangsT;
   const pathName = usePathname();
   const redirectedPathName = () => {
@@ -21,7 +22,7 @@ function Footer() {
       dir='ltr'
       className='flex h-8 items-center rounded-b-lg border border-line bg-surfacePrimary px-2 text-sm font-[450] text-tSecondary lg:px-6'
     >
-      <span className='shrink-0 px-1 pe-2'>download my cv</span>
+      <span className='shrink-0 px-1 pe-2'>{locale.downloadCV}</span>
       <Link href='#' className='border-x border-line px-2 py-1'>
         <RiDownload2Fill className='opacity-50 duration-500 hover:opacity-100' />
       </Link>
