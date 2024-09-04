@@ -13,9 +13,10 @@
   "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
   "importOrder": [
     "^react(.*)",
+    "^next(.*)",
     "^@",
+    "^clsx(.*)",
     "<THIRD_PARTY_MODULES>",
-    "types",
     "^store",
     "context/",
     "config",
@@ -25,6 +26,8 @@
     ".svg",
     "^../(.*)$",
     "^./(.*)$",
+    "types",
+    "^@remixicon/react",
     "(?=.module.scss)",
     "(?=.scss)",
     ".json"

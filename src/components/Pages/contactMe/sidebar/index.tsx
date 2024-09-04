@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import {
   RiArrowRightSLine,
   RiGithubFill,
@@ -10,8 +12,6 @@ import {
   RiWhatsappFill,
   RiYoutubeFill,
 } from '@remixicon/react';
-
-import Link from 'next/link';
 
 function ContactMeSideBar() {
   return (

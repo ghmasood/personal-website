@@ -1,10 +1,13 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
 import { RiArrowRightSLine, RiFolder3Fill, RiFolderOpenFill, RiMarkdownFill } from '@remixicon/react';
 
 import clsx from 'clsx';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+
+import { LangsT } from 'locale/dictionaries';
 
 export default function AboutMeLayout({
   children,
@@ -13,7 +16,9 @@ export default function AboutMeLayout({
 }>) {
   //PATHNAME HOOK
   const pathname = usePathname();
-  const lang = pathname.split('/')[1];
+  const lang = pathname.split('/')[1] as LangsT;
+
+  //DICTIONARY
 
   const util = [
     { path: `/${lang}/about-me/summery`, label: 'Summery', sub: ['index'] },

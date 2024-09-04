@@ -1,6 +1,6 @@
-import { RiExternalLinkFill } from '@remixicon/react';
-
 import Link from 'next/link';
+
+import { RiExternalLinkFill } from '@remixicon/react';
 
 import CommentedText from 'components/Pages/about/components/commentedText';
 

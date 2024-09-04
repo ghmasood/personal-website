@@ -5,6 +5,8 @@ const dictionaries = {
   fa: () => import('./fa.json').then((module) => module.default),
 };
 
-export const useGetDictionary = async (locale: 'en' | 'fa') => dictionaries[locale]();
+export type LangsT = keyof typeof dictionaries;
 
-export type DictT = Awaited<ReturnType<(typeof dictionaries)['en' | 'fa']>>;
+export const useGetDictionaryAsync = async (locale: LangsT) => dictionaries[locale]();
+
+export type DictT = Awaited<ReturnType<(typeof dictionaries)[LangsT]>>;

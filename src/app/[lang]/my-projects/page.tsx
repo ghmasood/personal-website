@@ -1,7 +1,8 @@
+import Link from 'next/link';
+
 import { RiStarSFill } from '@remixicon/react';
 
 import { DateTime } from 'luxon';
-import Link from 'next/link';
 
 import { ReposList } from 'types';
 

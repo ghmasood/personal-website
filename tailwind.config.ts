@@ -11,6 +11,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: { fira: ['var(--font-fira)'], vazir: ['var(--font-vazir)'] },
       colors: {
         background: '#01080E',
         surfacePrimary: '#011627',
@@ -54,11 +55,18 @@ const config: Config = {
             left: '100%',
           },
         },
+        typewriterRtl: {
+          to: {
+            right: '100%',
+          },
+        },
       },
       animation: {
         cursor: 'cursor 1s infinite',
         typewriter: 'typewriter 3.5s steps(19) forwards',
         caret: 'typewriter 3.5s steps(19) forwards, blink 1s steps(19) infinite 3.5s',
+        caretRtl: 'typewriterRtl 2.5s steps(22) forwards, blink 1s steps(22) infinite 2.5s',
+        typewriterRtl: 'typewriterRtl 2.5s steps(22) forwards',
       },
     },
   },

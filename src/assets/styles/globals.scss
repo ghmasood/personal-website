@@ -11,12 +11,23 @@
 :root {
   background-color: $background;
 }
+// FONT HANDLE
+html {
+  &[lang='en'] > * {
+    --font-default: var(--font-fira) !important;
+  }
+  &[lang='fa'] > * {
+    --font-default: var(--font-vazir) !important;
+  }
+}
+
 html,
 body {
   scroll-behavior: smooth;
   overflow: visible !important;
   margin: 0 auto;
   font-family:
+    var(--font-default),
     -apple-system,
     BlinkMacSystemFont,
     Segoe UI,

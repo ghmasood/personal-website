@@ -1,11 +1,12 @@
 'use client';
 
+import Link from 'next/link';
+import { useParams, usePathname } from 'next/navigation';
+
 import { RiDownload2Fill, RiGithubFill } from '@remixicon/react';
 
 import type { LangsT } from 'app/[lang]/layout';
 import type { DictT } from 'locale/dictionaries';
-import Link from 'next/link';
-import { useParams, usePathname } from 'next/navigation';
 
 function Footer({ locale }: { locale: DictT['layout'] }) {
   const lang = useParams().lang as LangsT;

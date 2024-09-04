@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
 import { RiCloseLargeFill, RiMenuLine } from '@remixicon/react';
 
 import clsx from 'clsx';
+
 import type { DictT } from 'locale/dictionaries';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 function Header({ locale }: { locale: DictT['layout'] }) {
   //STATES
@@ -86,7 +88,7 @@ const menuGenerator = (locale: DictT['layout']) => {
       path: '/hello',
     },
     {
-      title: locale.hello,
+      title: locale.about,
       path: '/about-me/summery',
     },
     {

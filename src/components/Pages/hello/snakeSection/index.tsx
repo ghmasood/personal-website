@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 
+import Link from 'next/link';
+
 import { RiArrowDropUpFill, RiCloseLine } from '@remixicon/react';
 
 import clsx from 'clsx';
-import Link from 'next/link';
 
 import Snake from 'components/Snake';
 

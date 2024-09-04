@@ -1,13 +1,14 @@
-import { NextUIProvider } from '@nextui-org/system';
-
 import type { Metadata } from 'next';
-import { Fira_Code } from 'next/font/google';
+import { Fira_Code, Vazirmatn } from 'next/font/google';
+
+import { NextUIProvider } from '@nextui-org/system';
 
 import Layout from 'components/UI/Layout';
 
 import 'assets/styles/globals.scss';
 
-const fira = Fira_Code({ subsets: ['latin'] });
+const fira = Fira_Code({ subsets: ['latin'], variable: '--font-fira' });
+const vazir = Vazirmatn({ subsets: ['latin'], variable: '--font-vazir' });
 
 export type LangsT = 'en' | 'fa';
 
@@ -28,7 +29,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang={params.lang} dir={params.lang === 'fa' ? 'rtl' : 'ltr'}>
-      <body className={fira.className}>
+      <body className={`${fira.variable} ${vazir.variable}`}>
         <NextUIProvider>
           <Layout lang={params.lang}>{children}</Layout>
         </NextUIProvider>
