@@ -1,4 +1,8 @@
 {
+  "settings": {
+    "language": "en",
+    "dir": "ltr"
+  },
   "layout": {
     "title": "masoud-ghanbarzadeh",
     "hello": "_hello",
@@ -17,16 +21,25 @@
   },
 
   "aboutPage": {
-    "summery": { "title": "Summary", "sub": ["index.md"] },
-    "experience": { "title": "Experience", "sub": ["IroTeam.md", "Wallex Exchange.md"] },
-    "education": { "title": "Education", "sub": ["Bachelor.md", "Diploma.md"] },
-    "certification": { "title": "Certification", "sub": ["index.md"] },
-    "techSkills": {
-      "title": "Technical Skills",
-      "sub": ["Frontend Core.md", "Frameworks & Libraries.md", "Styling & UI.md", "Tools & version Control.md"]
-    },
-    "langs": { "title": "Languages", "sub": ["English.md", "Persian.md"] }
+    "sideBar": [
+      { "title": "Summary", "sub": ["index"] },
+      { "title": "Experience", "sub": ["IroTeam", "Wallex Exchange"] },
+      { "title": "Education", "sub": ["Bachelor", "Diploma"] },
+      { "title": "Certification", "sub": ["index"] },
+      {
+        "title": "Technical Skills",
+        "sub": ["Frontend Core", "Frameworks & Libraries", "Styling & UI", "Tools & version Control"]
+      },
+      { "title": "Languages", "sub": ["English", "Persian"] }
+    ]
   },
 
-  "contactPage": { "name": "_name", "email": "_email", "message": "_message", "submit": "Submit" }
+  "contactPage": {
+    "name": "_name:",
+    "email": "_email:",
+    "message": "_message:",
+    "submit": "Submit",
+    "contacts": "contacts",
+    "find": "find-me-also-in"
+  }
 }

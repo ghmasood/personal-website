@@ -24,7 +24,10 @@ function FormCode({ formData }: formCodeProps) {
   }, [textRef, textRef?.current?.offsetHeight]);
 
   return (
-    <div className='hidden w-[60%] items-center justify-center gap-4 truncate text-tSecondary xl:flex'>
+    <div
+      dir='ltr'
+      className='hidden w-[60%] items-center justify-center gap-4 truncate font-fira text-tSecondary xl:flex'
+    >
       <div className='flex flex-col items-end'>
         {[...new Array(lineNumber ? lineNumber : 12)].map((_, index) => (
           <span className='' key={index}>

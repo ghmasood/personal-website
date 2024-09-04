@@ -9,6 +9,7 @@ import type { LangsT } from 'app/[lang]/layout';
 import type { DictT } from 'locale/dictionaries';
 
 function Footer({ locale }: { locale: DictT['layout'] }) {
+  
   const lang = useParams().lang as LangsT;
   const pathName = usePathname();
   const redirectedPathName = () => {
@@ -34,7 +35,7 @@ function Footer({ locale }: { locale: DictT['layout'] }) {
         href='https://github.com/ghmasood'
         className='group ms-auto flex items-center gap-1 truncate border-s border-line px-2 py-1 lg:ps-6'
       >
-        <span className='text-tSecondary duration-500 group-hover:text-tPrimary'>@ghmasood</span>
+        <span className='font-fira text-tSecondary duration-500 group-hover:text-tPrimary'>@ghmasood</span>
         <RiGithubFill className='opacity-50 duration-500 group-hover:opacity-100' />
       </Link>
     </footer>

@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { useGetDictionaryClient } from 'context/dictionaryProvider';
+
 import ContactMeForm from 'components/Pages/contactMe/form';
 import FormCode from 'components/Pages/contactMe/formCode';
 
@@ -12,6 +14,9 @@ export type formDataType = {
 };
 
 function ContactMe() {
+  //DICTIONARY
+  const dict = useGetDictionaryClient();
+
   //STATES
   const [formData, setFormData] = useState<formDataType>({
     name: '',
@@ -21,7 +26,7 @@ function ContactMe() {
 
   return (
     <>
-      <ContactMeForm formData={formData} setFormData={setFormData} />
+      <ContactMeForm locale={dict.contactPage} formData={formData} setFormData={setFormData} />
       <FormCode formData={formData} />
     </>
   );

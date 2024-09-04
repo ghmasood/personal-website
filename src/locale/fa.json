@@ -1,4 +1,8 @@
 {
+  "settings": {
+    "language": "fa",
+    "dir": "rtl"
+  },
   "layout": {
     "title": "مسعود قنبرزاده",
     "hello": "سلام",
@@ -17,16 +21,25 @@
   },
 
   "aboutPage": {
-    "summery": { "title": "خلاصه", "sub": ["index.md"] },
-    "experience": { "title": "تجربه", "sub": ["IroTeam.md", "Wallex Exchange.md"] },
-    "education": { "title": "تحصیلات", "sub": ["Bachelor.md", "Diploma.md"] },
-    "certification": { "title": "گواهینامه‌ها", "sub": ["index.md"] },
-    "techSkills": {
-      "title": "مهارت‌های فنی",
-      "sub": ["Frontend Core.md", "Frameworks & Libraries.md", "Styling & UI.md", "Tools & version Control.md"]
-    },
-    "langs": { "title": "زبان‌ها", "sub": ["English.md", "Persian.md"] }
+    "sideBar": [
+      { "title": "خلاصه", "sub": ["index"] },
+      { "title": "تجربه", "sub": ["ایروتیم", "صرافی والکس"] },
+      { "title": "تحصیلات", "sub": ["کارشناسی", "دیپلم"] },
+      { "title": "گواهینامه‌ها", "sub": ["index"] },
+      {
+        "title": "مهارت‌های فنی",
+        "sub": ["فرانت‌اند", "کتابخانه‌ها و فریمورک‌ها", "استایل‌دهی", "ابزار"]
+      },
+      { "title": "زبان‌ها", "sub": ["انگلیسی", "فارسی"] }
+    ]
   },
 
-  "contactPage": { "name": "نام", "email": "ایمیل", "message": "پیام", "submit": "ارسال" }
+  "contactPage": {
+    "name": "نام:",
+    "email": "ایمیل:",
+    "message": "پیام:",
+    "submit": "ارسال",
+    "contacts": "اطلاعات تماس",
+    "find": "همچنین مرا در اینجا پیدا کنید"
+  }
 }

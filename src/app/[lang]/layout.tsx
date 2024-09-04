@@ -3,6 +3,10 @@ import { Fira_Code, Vazirmatn } from 'next/font/google';
 
 import { NextUIProvider } from '@nextui-org/system';
 
+import { useGetDictionaryAsync } from 'locale/dictionaries';
+
+import DictionaryProvider from 'context/dictionaryProvider';
+
 import Layout from 'components/UI/Layout';
 
 import 'assets/styles/globals.scss';
@@ -27,12 +31,15 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: LangsT };
 }>) {
+  const dictionary = await useGetDictionaryAsync(params.lang);
   return (
     <html lang={params.lang} dir={params.lang === 'fa' ? 'rtl' : 'ltr'}>
       <body className={`${fira.variable} ${vazir.variable}`}>
-        <NextUIProvider>
-          <Layout lang={params.lang}>{children}</Layout>
-        </NextUIProvider>
+        <DictionaryProvider dictionary={dictionary}>
+          <NextUIProvider>
+            <Layout lang={params.lang}>{children}</Layout>
+          </NextUIProvider>
+        </DictionaryProvider>
       </body>
     </html>
   );

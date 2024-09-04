@@ -2,12 +2,14 @@ import { Button } from '@nextui-org/button';
 import { Input, Textarea } from '@nextui-org/input';
 
 import { formDataType } from 'app/[lang]/contact-me/page';
+import type { DictT } from 'locale/dictionaries';
 
 type formDataProps = {
   formData: formDataType;
   setFormData: React.Dispatch<React.SetStateAction<formDataType>>;
+  locale: DictT['contactPage'];
 };
-function ContactMeForm({ formData, setFormData }: formDataProps) {
+function ContactMeForm({ formData, setFormData, locale }: formDataProps) {
   return (
     <div className='flex w-full flex-col items-center justify-center gap-5 border-line xl:w-[40%] xl:border-e'>
       <form className='flex w-[70%] flex-col gap-3'>
@@ -19,7 +21,7 @@ function ContactMeForm({ formData, setFormData }: formDataProps) {
               'bg-surfaceSecondary border border-line hover:!bg-surfacePrimary group-data-[focus=true]:!bg-surfacePrimary  group-data-[focus=true]:!shadow group-data-[focus=true]:!shadow-surfacePrimary',
           }}
           radius='sm'
-          label='_name:'
+          label={locale.name}
           labelPlacement='outside'
           placeholder=' '
           value={formData.name}
@@ -33,7 +35,7 @@ function ContactMeForm({ formData, setFormData }: formDataProps) {
               'bg-surfaceSecondary border border-line hover:!bg-surfacePrimary group-data-[focus=true]:!bg-surfacePrimary  group-data-[focus=true]:!shadow group-data-[focus=true]:!shadow-surfacePrimary',
           }}
           radius='sm'
-          label='_email:'
+          label={locale.email}
           type='email'
           labelPlacement='outside'
           placeholder=' '
@@ -49,14 +51,14 @@ function ContactMeForm({ formData, setFormData }: formDataProps) {
               'bg-surfaceSecondary border border-line hover:!bg-surfacePrimary group-data-[focus=true]:!bg-surfacePrimary  group-data-[focus=true]:!shadow group-data-[focus=true]:!shadow-surfacePrimary',
           }}
           radius='sm'
-          label='_message:'
+          label={locale.message}
           labelPlacement='outside'
           placeholder=' '
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
         />
         <Button className='mt-2 bg-accent-blue text-tPrimary' radius='sm'>
-          Submit
+          {locale.submit}
         </Button>
       </form>
     </div>
