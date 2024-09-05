@@ -30,7 +30,7 @@ function Header({ locale }: { locale: DictT }) {
   return (
     <header className='relative flex h-14 items-center rounded-t-lg border border-line bg-surfacePrimary font-[450]'>
       <span
-        className={`group relative w-[18rem] shrink-0 select-none border-line px-3 py-4 align-middle text-tSecondary transition-colors duration-[3s] hover:text-tPrimary md:border-e`}
+        className={`group relative shrink-0 select-none border-line px-3 py-4 align-middle text-tSecondary transition-colors duration-[3s] hover:text-tPrimary md:w-[18rem] md:border-e`}
       >
         {locale.layout.title}
       </span>
@@ -59,7 +59,7 @@ function Header({ locale }: { locale: DictT }) {
           </Link>
         ))
       )}
-      <Link href={redirectedPathName()} className='ms-auto border-s border-line px-0.5 py-2'>
+      <Link href={redirectedPathName()} className='ms-auto hidden border-s border-line px-0.5 py-2 md:block'>
         {locale.settings.language === 'en' ? (
           <Image src={'/images/fa.svg'} width={40} height={100} alt={''} />
         ) : (
@@ -88,6 +88,13 @@ function Header({ locale }: { locale: DictT }) {
             {item.title}
           </Link>
         ))}
+        <Link href={redirectedPathName()} className='w-full border-b border-line px-0.5'>
+          {locale.settings.language === 'en' ? (
+            <Image src={'/images/fa.svg'} width={50} height={100} alt={''} />
+          ) : (
+            <Image src={'/images/en.svg'} width={40} height={100} alt={''} />
+          )}
+        </Link>
       </div>
     </header>
   );
