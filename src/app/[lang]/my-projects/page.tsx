@@ -2,16 +2,18 @@ import Link from 'next/link';
 
 import { RiStarSFill } from '@remixicon/react';
 
+import { LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
 import { DateTime } from 'luxon';
 
 import { ReposList } from 'types';
 
-export default async function MyProjects() {
+export default async function MyProjects({ params: { lang } }: { params: { lang: LangsT } }) {
   const res = await fetch('https://api.github.com/users/ghmasood/repos?sort=upded&direction=desc', {
     cache: 'no-store',
   });
   const data = (await res.json()) as ReposList;
 
+  const updatedLocale = (await useGetDictionaryAsync(lang)).projectsPage.updated;
   return (
     <div className='flex flex-wrap gap-6 p-4'>
       {data.map((repo) => (
@@ -34,7 +36,10 @@ export default async function MyProjects() {
               <span className='w-fit rounded-full bg-accent-blue px-1.5 py-0.5 text-tPrimary'>{repo.language}</span>
             )}
             <span className='font-[200] text-tSecondary'>
-              Updated {DateTime.fromISO(repo?.updated_at ?? '').toRelative()}
+              {updatedLocale}{' '}
+              {DateTime.fromISO(repo?.updated_at ?? '')
+                .setLocale(lang === 'fa' ? 'fa-IR' : 'en-US')
+                .toRelative()}
             </span>
           </div>
           <span className='absolute bottom-0 start-0 h-1 w-0 bg-accent-blue/80 duration-[3s] group-hover:w-full' />

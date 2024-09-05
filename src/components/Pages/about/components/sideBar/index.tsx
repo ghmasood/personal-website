@@ -22,7 +22,7 @@ function AboutSideBar() {
   const lang = dict.settings.language as LangsT;
 
   return (
-    <div className='flex flex-col gap-0.5 border-e border-line p-2 text-tSecondary md:h-full md:p-4'>
+    <div className='flex shrink-0 flex-col gap-0.5 border-e border-line p-2 text-tSecondary md:h-full md:!w-[18rem] md:p-4'>
       {sideBarGenerator(lang, menuLocale).map((item) => (
         <div className='flex flex-col gap-1' key={item.path}>
           <Link

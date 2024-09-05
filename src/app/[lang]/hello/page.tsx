@@ -1,11 +1,9 @@
 import dynamic from 'next/dynamic';
 
-import { useGetDictionaryAsync } from 'locale/dictionaries';
+import { type LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
 
 import IntroSection from 'components/Pages/hello/introSection';
 import SnakeSectionLoading from 'components/Pages/hello/snakeSection/loading';
-
-import type { LangsT } from '../layout';
 
 const SnakeSection = dynamic(() => import('components/Pages/hello/snakeSection'), {
   ssr: false,

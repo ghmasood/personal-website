@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -19,27 +20,30 @@ function Header({ locale }: { locale: DictT }) {
   //STATES
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const redirectedPathName = () => {
+    if (!pathName) return '/';
+    const segments = pathName.split('/');
+    segments[1] = locale.settings.language === 'en' ? 'fa' : 'en';
+    return segments.join('/');
+  };
+
   return (
     <header className='relative flex h-14 items-center rounded-t-lg border border-line bg-surfacePrimary font-[450]'>
-      <div
-        className={`group relative shrink-0 select-none border-line px-2 py-4 align-middle text-tSecondary transition-colors duration-[3s] hover:text-tPrimary md:border-e lg:px-12`}
+      <span
+        className={`group relative w-[18rem] shrink-0 select-none border-line px-3 py-4 align-middle text-tSecondary transition-colors duration-[3s] hover:text-tPrimary md:border-e`}
       >
-        <span className='relative z-[1]'>{locale.layout.title}</span>
-        <span className='absolute start-1 top-[1.125rem] h-5 w-5 rounded-full bg-tSecondary opacity-20 duration-[3s] group-hover:w-[12.25rem] group-hover:opacity-100 lg:start-10' />
-      </div>
+        {locale.layout.title}
+      </span>
 
       {pathName === '/' ? (
         <></>
       ) : (
-        menuGenerator(locale.layout).map((item, index) => (
+        menuGenerator(locale.layout).map((item) => (
           <Link
             href={`/${locale.settings.language}${item.path}`}
             key={item.title}
             className={clsx(
-              'relative hidden border-line py-4 duration-500 md:block',
-              index === menuGenerator(locale.layout).length - 1
-                ? 'ms-auto border-s px-2 lg:px-6'
-                : 'border-e px-2 lg:px-4',
+              'relative hidden truncate border-e border-line px-3 py-4 duration-500 md:block',
               item.path.includes(pathName.toString().split('/')[1])
                 ? 'text-tPrimary'
                 : 'text-tSecondary hover:text-tPrimary/50'
@@ -55,6 +59,13 @@ function Header({ locale }: { locale: DictT }) {
           </Link>
         ))
       )}
+      <Link href={redirectedPathName()} className='ms-auto border-s border-line px-0.5 py-2'>
+        {locale.settings.language === 'en' ? (
+          <Image src={'/images/fa.svg'} width={40} height={100} alt={''} />
+        ) : (
+          <Image src={'/images/en.svg'} width={40} height={100} alt={''} />
+        )}
+      </Link>
       <div
         className='ms-auto px-2 text-tSecondary hover:text-tPrimary active:text-tPrimary md:hidden'
         onClick={() => setIsMenuOpen((prev) => !prev)}

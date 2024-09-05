@@ -1,24 +1,10 @@
-'use client';
-
 import Link from 'next/link';
-import { useParams, usePathname } from 'next/navigation';
 
 import { RiDownload2Fill, RiGithubFill } from '@remixicon/react';
 
-import type { LangsT } from 'app/[lang]/layout';
 import type { DictT } from 'locale/dictionaries';
 
 function Footer({ locale }: { locale: DictT['layout'] }) {
-  
-  const lang = useParams().lang as LangsT;
-  const pathName = usePathname();
-  const redirectedPathName = () => {
-    if (!pathName) return '/';
-    const segments = pathName.split('/');
-    segments[1] = lang === 'en' ? 'fa' : 'en';
-    return segments.join('/');
-  };
-
   return (
     <footer
       dir='ltr'
@@ -28,9 +14,7 @@ function Footer({ locale }: { locale: DictT['layout'] }) {
       <Link href='#' className='border-x border-line px-2 py-1'>
         <RiDownload2Fill className='opacity-50 duration-500 hover:opacity-100' />
       </Link>
-      <Link className='border-e border-line px-1 py-1' href={redirectedPathName()}>
-        change lang
-      </Link>
+
       <Link
         href='https://github.com/ghmasood'
         className='group ms-auto flex items-center gap-1 truncate border-s border-line px-2 py-1 lg:ps-6'

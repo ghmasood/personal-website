@@ -3,7 +3,7 @@ import { Fira_Code, Vazirmatn } from 'next/font/google';
 
 import { NextUIProvider } from '@nextui-org/system';
 
-import { useGetDictionaryAsync } from 'locale/dictionaries';
+import { LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
 
 import DictionaryProvider from 'context/dictionaryProvider';
 
@@ -13,8 +13,6 @@ import 'assets/styles/globals.scss';
 
 const fira = Fira_Code({ subsets: ['latin'], variable: '--font-fira' });
 const vazir = Vazirmatn({ subsets: ['latin'], variable: '--font-vazir' });
-
-export type LangsT = 'en' | 'fa';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'fa' }];

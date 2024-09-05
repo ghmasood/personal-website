@@ -286,7 +286,7 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
         >
           <Button
             size='sm'
-            className='cursor-pointer rounded-lg bg-accent-orange text-sm text-tPrimary duration-500'
+            className='rounded-lg bg-accent-orange text-sm text-tPrimary duration-500'
             onClick={() => setFirstStart(false)}
           >
             start-game
