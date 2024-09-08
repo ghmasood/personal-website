@@ -1,0 +1,8 @@
+{
+   "GET /api/highscore": {
+      "content-type": "api::highscore.highscore",
+      "fields": [
+         "score"
+      ]
+   }
+}
