@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "highscores",
+  "info": {
+    "singularName": "highscore",
+    "pluralName": "highscores",
+    "displayName": "highscore"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "score": {
+      "type": "integer",
+      "required": true,
+      "default": 0,
+      "min": 0
+    }
+  }
+}
