@@ -8,14 +8,20 @@ import { RiArrowDropUpFill, RiCloseLine } from '@remixicon/react';
 
 import clsx from 'clsx';
 
+import { useGetDictionaryClient } from 'context/dictionaryProvider';
+
 import Snake from 'components/Snake';
 
 function SnakeSection({ className = '' }: { className?: string }) {
+  //DICTIONARY
+  const { helloPage: locale } = useGetDictionaryClient();
+
   //STATES
   const [score, setScore] = useState(0);
 
   //VARIABLES
   const highScore = localStorage ? localStorage.getItem('highScore') : score;
+
   return (
     <div className={clsx('relative', className)}>
       <div className='flex flex-col justify-center gap-3 rounded-lg bg-gradient-to-tr from-[rgba(23,85,83,0.70)] to-[rgba(67,217,173,0.09)] p-8 shadow-md xl:flex-row'>
@@ -36,7 +42,7 @@ function SnakeSection({ className = '' }: { className?: string }) {
         </div>
         <div className='flex flex-col'>
           <div className='hidden flex-col items-center rounded-lg bg-surfacePrimary/20 p-2 text-tPrimary xl:flex'>
-            <span className='mb-3 self-start whitespace-pre-line text-xs font-[350]'>{`// use keyboard\n// arrows to play`}</span>
+            <span className='mb-3 self-start whitespace-pre-line text-xs font-[350]'>{locale.useKeyboard}</span>
             <div className='flex h-7 w-12 items-center justify-center rounded-lg border border-line bg-black'>
               <RiArrowDropUpFill />
             </div>
@@ -52,13 +58,13 @@ function SnakeSection({ className = '' }: { className?: string }) {
               </div>
             </div>
           </div>
-          <span className='mt-5 text-sm text-tPrimary'>{`// your score: ${score}`}</span>
-          <span className='mb-2 text-sm text-tPrimary'>{`// High score: ${highScore && score > +highScore ? score : highScore}`}</span>
+          <span className='mt-5 text-sm text-tPrimary'>{`${locale.yourScore} ${score}`}</span>
+          <span className='mb-2 text-sm text-tPrimary'>{`${locale.highScore} ${highScore && score > +highScore ? score : highScore}`}</span>
           <Link
             className='relative z-[3] mt-auto self-end rounded-md border border-tPrimary px-2 py-1 text-sm text-tPrimary'
             href='/about-me/summery'
           >
-            Skip
+            {locale.skip}
           </Link>
         </div>
       </div>

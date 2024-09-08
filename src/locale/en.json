@@ -17,7 +17,14 @@
     "name": "Masoud Ghanbarzadeh",
     "position": "front-end developer",
     "completeGame": "// complete the game to continue",
-    "seeGit": "// you can also see it on my Github page"
+    "seeGit": "// you can also see it on my Github page",
+    "yourScore": "// your score:",
+    "highScore": "// high score:",
+    "start": "start-game",
+    "gameOver": "GAME OVER!",
+    "playAgain": "play-again",
+    "skip": "skip",
+    "useKeyboard": "// use keyboard\n// arrows to play"
   },
 
   "aboutPage": {

@@ -6,6 +6,8 @@ import { Button } from '@nextui-org/button';
 
 import clsx from 'clsx';
 
+import { useGetDictionaryClient } from 'context/dictionaryProvider';
+
 type Props = {
   points: number;
   setPoints: Dispatch<SetStateAction<number>>;
@@ -19,6 +21,8 @@ type SnakeT = {
 };
 
 const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
+  //DICT
+  const { helloPage: locale } = useGetDictionaryClient();
   //STATES
   const [direction, setDirection] = useState<DirectionT>('right');
   const [fruit, setFruit] = useState<number>(222);
@@ -272,10 +276,10 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
           style={{ height: containerWidth }}
         >
           <div className='w-full bg-surfacePrimary py-1 text-center text-xl text-accent-green shadow-[inset_1px_5px_11px_0px_rgba(2,18,27,0.71)]'>
-            GAME OVER!
+            {locale.gameOver}
           </div>
           <span className='cursor-pointer text-sm text-tSecondary duration-500 hover:text-tPrimary/50' onClick={reset}>
-            play-again
+            {locale.playAgain}
           </span>
         </div>
       )}
@@ -289,7 +293,7 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
             className='rounded-lg bg-accent-orange text-sm text-tPrimary duration-500'
             onClick={() => setFirstStart(false)}
           >
-            start-game
+            {locale.start}
           </Button>
         </div>
       )}

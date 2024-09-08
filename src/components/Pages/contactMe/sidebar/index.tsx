@@ -24,7 +24,7 @@ function ContactMeSideBar() {
     <div className='flex shrink-0 flex-col gap-2 border-b border-line p-3 text-sm md:w-[18rem] md:border-e'>
       <div className='flex flex-col gap-2 text-tPrimary'>
         <div className='flex items-center gap-0.5'>
-          <RiArrowRightSLine />
+          <RiArrowRightSLine className='rtl:rotate-180' />
           <span>{locale.contacts}</span>
         </div>
         <div className='flex flex-col gap-2 ps-5 font-fira font-[300] text-tSecondary'>
@@ -43,7 +43,7 @@ function ContactMeSideBar() {
       </div>
       <div className='flex flex-col gap-2 text-tPrimary'>
         <div className='flex items-center gap-0.5'>
-          <RiArrowRightSLine />
+          <RiArrowRightSLine className='rtl:rotate-180' />
           <span>{locale.find}</span>
         </div>
         <div className='flex flex-col gap-2 ps-5 font-fira font-[300] text-tSecondary'>
