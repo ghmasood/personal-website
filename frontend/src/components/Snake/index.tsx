@@ -11,6 +11,7 @@ import { useGetDictionaryClient } from 'context/dictionaryProvider';
 type Props = {
   points: number;
   setPoints: Dispatch<SetStateAction<number>>;
+  highScore: number;
   containerWidth: number;
 };
 
@@ -20,7 +21,7 @@ type SnakeT = {
   part: number[];
 };
 
-const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
+const Snake: React.FC<Props> = ({ points, setPoints, containerWidth, highScore }) => {
   //DICT
   const { helloPage: locale } = useGetDictionaryClient();
   //STATES
@@ -143,7 +144,15 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth }) => {
     }
     const head = snake[0].part[0];
     if (totalArr.filter((item) => item === head).length >= 2) {
-      localStorage.setItem('highScore', points.toString());
+      if (points > highScore) {
+        fetch('https://admin.gh-masoud.ir/api/highscore', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            data: { score: points },
+          }),
+        });
+      }
       setGameOver(true);
     }
 

@@ -12,15 +12,12 @@ import { useGetDictionaryClient } from 'context/dictionaryProvider';
 
 import Snake from 'components/Snake';
 
-function SnakeSection({ className = '' }: { className?: string }) {
+function SnakeSection({ className = '', highScore }: { className?: string; highScore: number }) {
   //DICTIONARY
   const { helloPage: locale } = useGetDictionaryClient();
 
   //STATES
   const [score, setScore] = useState(0);
-
-  //VARIABLES
-  const highScore = localStorage ? localStorage.getItem('highScore') : score;
 
   return (
     <div className={clsx('relative', className)}>
@@ -38,7 +35,7 @@ function SnakeSection({ className = '' }: { className?: string }) {
           <RiCloseLine size='1rem' className='text-black' />
         </div>
         <div className='relative z-[3] min-w-[200px] overflow-hidden rounded-lg shadow-[inset_1px_5px_11px_0px_rgba(2,18,27,0.71)]'>
-          <Snake points={score} setPoints={setScore} containerWidth={200} />
+          <Snake points={score} setPoints={setScore} highScore={highScore} containerWidth={200} />
         </div>
         <div className='flex flex-col'>
           <div className='hidden flex-col items-center rounded-lg bg-surfacePrimary/20 p-2 text-tPrimary xl:flex'>
@@ -59,7 +56,7 @@ function SnakeSection({ className = '' }: { className?: string }) {
             </div>
           </div>
           <span className='mt-5 text-sm text-tPrimary'>{`${locale.yourScore} ${score}`}</span>
-          <span className='mb-2 text-sm text-tPrimary'>{`${locale.highScore} ${highScore && score > +highScore ? score : highScore}`}</span>
+          <span className='mb-2 text-sm text-tPrimary'>{`${locale.highScore} ${highScore > score ? highScore : score}`}</span>
           <Link
             className='relative z-[3] mt-auto self-end rounded-md border border-tPrimary px-2 py-1 text-sm text-tPrimary'
             href='/about-me/summery'

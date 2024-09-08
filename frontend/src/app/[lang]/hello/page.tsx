@@ -13,10 +13,15 @@ const SnakeSection = dynamic(() => import('components/Pages/hello/snakeSection')
 export default async function Home({ params: { lang } }: { params: { lang: LangsT } }) {
   const dict = await useGetDictionaryAsync(lang);
 
+  const api = await fetch('https://admin.gh-masoud.ir/api/highscore', { cache: 'no-store' });
+
+  const data = await api.json();
+  const highScore = (data.data.score as number) ?? 0;
+
   return (
     <div className='relative flex h-full items-center justify-evenly gap-5 px-10'>
       <IntroSection locale={dict.helloPage} />
-      <SnakeSection className='hidden lg:block' />
+      <SnakeSection className='hidden lg:block' highScore={highScore} />
 
       {/* absolute shadows */}
       <div className='absolute start-5 top-[15%] h-1/3 w-1/4 -rotate-12 bg-accent-green opacity-30 blur-3xl lg:hidden' />
