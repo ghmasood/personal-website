@@ -59,11 +59,11 @@ function Header({ locale }: { locale: DictT }) {
           </Link>
         ))
       )}
-      <Link href={redirectedPathName()} className='ms-auto hidden border-s border-line px-0.5 py-2 md:block'>
+      <Link href={redirectedPathName()} className='ms-auto hidden border-s border-line px-1.5 py-4 md:block'>
         {locale.settings.language === 'en' ? (
-          <Image src={'/images/fa.svg'} width={40} height={100} alt={''} />
+          <Image src={'/images/fa.svg'} width={32} height={20} alt={'persian flag'} className='rounded-md opacity-65' />
         ) : (
-          <Image src={'/images/en.svg'} width={40} height={100} alt={''} />
+          <Image src={'/images/en.svg'} width={32} height={20} alt={'english flag'} className='rounded-md opacity-65' />
         )}
       </Link>
       <div

@@ -12,6 +12,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "@_sh/strapi-plugin-ckeditor": "^3.0.1",
     "@strapi/plugin-cloud": "4.25.10",
     "@strapi/plugin-i18n": "4.25.10",
     "@strapi/plugin-users-permissions": "4.25.10",
@@ -20,6 +21,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
+    "strapi-plugin-multi-select": "^1.2.3",
     "strapi-plugin-protected-populate": "^1.3.6",
     "strapi-plugin-transformer": "^3.1.2",
     "styled-components": "5.3.3"
