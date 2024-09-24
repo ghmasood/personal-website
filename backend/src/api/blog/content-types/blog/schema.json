@@ -86,7 +86,12 @@
     },
     "tags": {
       "type": "customField",
-      "customField": "plugin::multi-select.multi-select"
+      "customField": "plugin::multi-select.multi-select",
+      "options": [
+        "hello world",
+        "first Post",
+        "community "
+      ]
     }
   }
 }

@@ -831,7 +831,10 @@ export interface ApiBlogBlog extends Schema.CollectionType {
         }
       >;
     tags: Attribute.JSON &
-      Attribute.CustomField<'plugin::multi-select.multi-select'>;
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['hello world', 'first Post', 'community ']
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
