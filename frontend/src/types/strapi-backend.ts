@@ -6,6 +6,7 @@ export type blogItem = {
   en_summery: string;
   fa_content: string;
   en_content: string;
+  updatedAt: string;
   slug: string;
   category: string;
   tags: string[];

@@ -11,8 +11,8 @@ import Layout from 'components/UI/Layout';
 
 import 'assets/styles/globals.scss';
 
-const fira = Fira_Code({ subsets: ['latin'], variable: '--font-fira' });
-const vazir = Vazirmatn({ subsets: ['latin'], variable: '--font-vazir' });
+const fira = Fira_Code({ subsets: ['latin'], variable: '--font-fira', display: 'swap' });
+const vazir = Vazirmatn({ subsets: ['arabic'], variable: '--font-vazir', display: 'swap' });
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'fa' }];
@@ -30,6 +30,7 @@ export default async function RootLayout({
   params: { lang: LangsT };
 }>) {
   const dictionary = await useGetDictionaryAsync(params.lang);
+
   return (
     <html lang={params.lang} dir={params.lang === 'fa' ? 'rtl' : 'ltr'}>
       <head>

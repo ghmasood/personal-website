@@ -5,7 +5,7 @@ import { RiStarSFill } from '@remixicon/react';
 import { LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
 import { DateTime } from 'luxon';
 
-import { ReposList } from 'types';
+import { ReposList } from 'types/github';
 
 export default async function MyProjects({ params: { lang } }: { params: { lang: LangsT } }) {
   const res = await fetch('https://api.github.com/users/ghmasood/repos?sort=upded&direction=desc', {
