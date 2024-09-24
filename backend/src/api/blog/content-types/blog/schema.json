@@ -10,18 +10,10 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
-    "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+    "fa_title": {
+      "pluginOptions": {},
       "type": "string",
       "required": true
     },
@@ -32,11 +24,7 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "pluginOptions": {}
     },
     "image": {
       "type": "media",
@@ -45,43 +33,16 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "pluginOptions": {}
     },
-    "summery": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+    "fa_summery": {
+      "pluginOptions": {},
       "type": "string",
       "maxLength": 255,
       "required": true
     },
-    "tags": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "customField",
-      "required": true,
-      "options": [
-        "Javascript",
-        "React.js",
-        "next.js"
-      ],
-      "customField": "plugin::multi-select.multi-select"
-    },
-    "content": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+    "fa_content": {
+      "pluginOptions": {},
       "type": "customField",
       "options": {
         "preset": "default"
@@ -90,14 +51,42 @@
       "customField": "plugin::ckeditor5.CKEditor"
     },
     "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "category": {
+      "pluginOptions": {},
+      "type": "enumeration",
+      "enum": [
+        "React.js",
+        "Next.js",
+        "HTML",
+        "CSS",
+        "Javascript",
+        "General"
+      ],
+      "required": true
+    },
+    "en_title": {
+      "type": "string",
+      "required": true
+    },
+    "en_summery": {
+      "type": "string",
+      "required": true
+    },
+    "en_content": {
+      "type": "customField",
+      "options": {
+        "preset": "default"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "tags": {
+      "type": "customField",
+      "customField": "plugin::multi-select.multi-select"
     }
   }
 }
