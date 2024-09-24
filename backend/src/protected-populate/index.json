@@ -4,5 +4,24 @@
       "fields": [
          "score"
       ]
+   },
+   "GET /api/blogs": {
+      "content-type": "api::blog.blog",
+      "fields": [
+         "fa_title",
+         "fa_summery",
+         "slug",
+         "category",
+         "en_title",
+         "en_summery",
+         "tags"
+      ],
+      "populate": {
+         "thumbnail": {
+            "fields": [
+               "url"
+            ]
+         }
+      }
    }
 }
