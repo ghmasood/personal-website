@@ -12,7 +12,7 @@ export default async function blogs({ params: { lang } }: { params: { lang: Lang
   if (!data) return;
 
   return (
-    <div className='flex flex-wrap p-4'>
+    <div className='flex flex-wrap'>
       {data.data.map((blog) => (
         <BlogCard key={blog.id} data={blog} lang={lang} />
       ))}

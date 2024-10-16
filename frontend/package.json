@@ -11,8 +11,8 @@
     "format": "prettier --write . --config ./.prettierrc"
   },
   "dependencies": {
-    "@nextui-org/button": "^2.0.37",
-    "@nextui-org/input": "^2.2.4",
+    "@nextui-org/button": "^2.0.38",
+    "@nextui-org/input": "^2.2.5",
     "@nextui-org/system": "^2.2.5",
     "@nextui-org/theme": "^2.2.9",
     "@remixicon/react": "^4.2.0",
@@ -20,7 +20,8 @@
     "framer-motion": "^11.3.30",
     "luxon": "^3.5.0",
     "negotiator": "^0.6.3",
-    "next": "14.2.5",
+    "next": "^14.2.15",
+    "nextui-cli": "^0.3.4",
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.77.8"
