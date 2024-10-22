@@ -8,6 +8,8 @@ import clsx from 'clsx';
 
 import { useGetDictionaryClient } from 'context/dictionaryProvider';
 
+import { appConfig } from 'utils/configs';
+
 type Props = {
   points: number;
   setPoints: Dispatch<SetStateAction<number>>;
@@ -145,7 +147,7 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth, highScore }
     const head = snake[0].part[0];
     if (totalArr.filter((item) => item === head).length >= 2) {
       if (points > highScore) {
-        fetch('https://admin.gh-masoud.ir/api/highscore', {
+        fetch(`${appConfig.main.backAPI}/highscore`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

@@ -2,6 +2,8 @@ import dynamic from 'next/dynamic';
 
 import { type LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
 
+import { appConfig } from 'utils/configs';
+
 import IntroSection from 'components/Pages/hello/introSection';
 import SnakeSectionLoading from 'components/Pages/hello/snakeSection/loading';
 
@@ -13,7 +15,7 @@ const SnakeSection = dynamic(() => import('components/Pages/hello/snakeSection')
 export default async function Home({ params: { lang } }: { params: { lang: LangsT } }) {
   const dict = await useGetDictionaryAsync(lang);
 
-  const api = await fetch('https://admin.gh-masoud.ir/api/highscore', { cache: 'no-store' });
+  const api = await fetch(`${appConfig.main.backAPI}/highscore`, { cache: 'no-store' });
 
   const data = await api.json();
   const highScore = (data.data.score as number) ?? 0;
