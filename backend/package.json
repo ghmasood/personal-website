@@ -1,16 +1,19 @@
 {
   "name": "personal-website-strapi",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "A Strapi application",
+  "license": "MIT",
+  "author": {
+    "name": "A Strapi developer"
+  },
   "scripts": {
+    "build": "strapi build",
+    "deploy": "strapi deploy",
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi",
-    "deploy": "strapi deploy"
+    "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^3.0.1",
     "@strapi/plugin-cloud": "4.25.10",
@@ -26,16 +29,12 @@
     "strapi-plugin-transformer": "^3.1.2",
     "styled-components": "5.3.3"
   },
-  "author": {
-    "name": "A Strapi developer"
+  "devDependencies": {},
+  "engines": {
+    "node": "18.x.x",
+    "npm": ">=6.0.0"
   },
   "strapi": {
     "uuid": "71950f58-795f-4a91-b196-daea4d874ff2"
-  },
-  "engines": {
-    // "node": ">=18.0.0 <=20.x.x",
-    "node": "18.x",
-    "npm": ">=6.0.0"
-  },
-  "license": "MIT"
+  }
 }
