@@ -30,8 +30,8 @@
     "node": "20.x.x",
     "npm": ">=6.0.0"
   },
-  "packageManager": "^pnpm@6.32.4",
   "strapi": {
     "uuid": "4e89b326-6e50-4d00-89d0-eb0df75f40b8"
-  }
+  },
+  "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
 }
