@@ -20,7 +20,7 @@ export default async function Home(props: { params: Params }) {
   const api = await fetch(`${appConfig.main.backAPI}/highscore`, { cache: 'no-store' });
 
   const data = await api.json();
-  const highScore = (data.score as number) ?? 0;
+  const highScore = (data.data.score as number) ?? 0;
 
   return (
     <div className='relative flex h-full items-center justify-evenly gap-5 px-10'>
