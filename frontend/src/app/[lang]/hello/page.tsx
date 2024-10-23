@@ -8,17 +8,19 @@ import IntroSection from 'components/Pages/hello/introSection';
 import SnakeSectionLoading from 'components/Pages/hello/snakeSection/loading';
 
 const SnakeSection = dynamic(() => import('components/Pages/hello/snakeSection'), {
-  ssr: false,
   loading: () => <SnakeSectionLoading />,
 });
 
-export default async function Home({ params: { lang } }: { params: { lang: LangsT } }) {
+type Params = Promise<{ lang: LangsT }>;
+
+export default async function Home(props: { params: Params }) {
+  const lang = (await props.params).lang;
   const dict = await useGetDictionaryAsync(lang);
 
   const api = await fetch(`${appConfig.main.backAPI}/highscore`, { cache: 'no-store' });
 
   const data = await api.json();
-  const highScore = (data.data.score as number) ?? 0;
+  const highScore = (data.score as number) ?? 0;
 
   return (
     <div className='relative flex h-full items-center justify-evenly gap-5 px-10'>

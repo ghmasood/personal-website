@@ -6,7 +6,8 @@ import BlogCard from 'components/Pages/blogs/blogCard';
 
 import type { blogsListRes } from 'types/strapi-backend';
 
-export default async function blogs({ params: { lang } }: { params: { lang: LangsT } }) {
+type Params = Promise<{ lang: LangsT }>;
+export default async function blogs(props: { params: Params }) {
   const api = await fetch(`${appConfig.main.backAPI}/blogs`, { cache: 'no-store' });
 
   const data = (await api.json()) as blogsListRes;
@@ -14,7 +15,7 @@ export default async function blogs({ params: { lang } }: { params: { lang: Lang
   console.log(data.data[0].thumbnail);
 
   if (!data) return;
-
+  const lang = (await props.params).lang;
   return (
     <div className='flex flex-wrap'>
       {data.data.map((blog) => (

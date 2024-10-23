@@ -22,24 +22,27 @@ export const metadata: Metadata = {
   description: 'my personal website as front-end developer',
 };
 
+type Params = Promise<{ lang: LangsT }>;
+
 export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { lang: LangsT };
+  params: Params;
 }>) {
-  const dictionary = await useGetDictionaryAsync(params.lang);
+  const lang = (await params).lang;
+  const dictionary = await useGetDictionaryAsync(lang);
 
   return (
-    <html lang={params.lang} dir={params.lang === 'fa' ? 'rtl' : 'ltr'}>
+    <html lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
       <head>
         <meta name='robots' content='noindex, nofollow' />
       </head>
       <body className={`${fira.variable} ${vazir.variable}`}>
         <DictionaryProvider dictionary={dictionary}>
           <NextUIProvider>
-            <Layout lang={params.lang}>{children}</Layout>
+            <Layout lang={lang}>{children}</Layout>
           </NextUIProvider>
         </DictionaryProvider>
       </body>

@@ -7,7 +7,10 @@ import { DateTime } from 'luxon';
 
 import { ReposList } from 'types/github';
 
-export default async function MyProjects({ params: { lang } }: { params: { lang: LangsT } }) {
+type Params = Promise<{ lang: LangsT }>;
+export default async function MyProjects(props: { params: Params }) {
+  const lang = (await props.params).lang;
+
   const res = await fetch('https://api.github.com/users/ghmasood/repos?sort=upded&direction=desc', {
     cache: 'no-store',
   });
