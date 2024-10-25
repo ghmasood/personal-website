@@ -4,7 +4,8 @@
   "info": {
     "singularName": "highscore",
     "pluralName": "highscores",
-    "displayName": "highscore"
+    "displayName": "Highscore",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

@@ -561,7 +561,8 @@ export interface ApiCategorieCategorie extends Struct.CollectionTypeSchema {
   info: {
     singularName: 'categorie';
     pluralName: 'categories';
-    displayName: 'categories';
+    displayName: 'Categories';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -596,7 +597,8 @@ export interface ApiHighscoreHighscore extends Struct.SingleTypeSchema {
   info: {
     singularName: 'highscore';
     pluralName: 'highscores';
-    displayName: 'highscore';
+    displayName: 'Highscore';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -632,7 +634,8 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
   info: {
     singularName: 'tag';
     pluralName: 'tags';
-    displayName: 'tags';
+    displayName: 'Tags';
+    description: '';
   };
   options: {
     draftAndPublish: true;
