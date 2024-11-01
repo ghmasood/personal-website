@@ -461,12 +461,12 @@ export interface ApiCategorieCategorie extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContactUsContactUs extends Struct.CollectionTypeSchema {
-  collectionName: 'contact_list';
+export interface ApiContactMeContactMe extends Struct.CollectionTypeSchema {
+  collectionName: 'contact_mes';
   info: {
-    displayName: 'Contact-us';
-    pluralName: 'contact-list';
-    singularName: 'contact-us';
+    displayName: 'Contact-me';
+    pluralName: 'contact-mes';
+    singularName: 'contact-me';
   };
   options: {
     draftAndPublish: true;
@@ -479,7 +479,7 @@ export interface ApiContactUsContactUs extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::contact-us.contact-us'
+      'api::contact-me.contact-me'
     > &
       Schema.Attribute.Private;
     message: Schema.Attribute.Text & Schema.Attribute.Required;
@@ -1075,7 +1075,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::blog.blog': ApiBlogBlog;
       'api::categorie.categorie': ApiCategorieCategorie;
-      'api::contact-us.contact-us': ApiContactUsContactUs;
+      'api::contact-me.contact-me': ApiContactMeContactMe;
       'api::highscore.highscore': ApiHighscoreHighscore;
       'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;

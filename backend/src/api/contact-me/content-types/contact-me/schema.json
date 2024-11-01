@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "contact_list",
+  "collectionName": "contact_mes",
   "info": {
-    "singularName": "contact-us",
-    "pluralName": "contact-list",
-    "displayName": "Contact-us"
+    "singularName": "contact-me",
+    "pluralName": "contact-mes",
+    "displayName": "Contact-me"
   },
   "options": {
     "draftAndPublish": true
@@ -13,8 +13,8 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true,
-      "maxLength": 32
+      "maxLength": 32,
+      "required": true
     },
     "email": {
       "type": "email",
