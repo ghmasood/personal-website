@@ -4,10 +4,10 @@ import { type LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
 
 import { appConfig } from 'utils/configs';
 
-import IntroSection from 'components/Pages/hello/introSection';
-import SnakeSectionLoading from 'components/Pages/hello/snakeSection/loading';
+import IntroSection from 'components/pages/hello/components/introSection';
+import SnakeSectionLoading from 'components/pages/hello/components/snakeSection/loading';
 
-const SnakeSection = dynamic(() => import('components/Pages/hello/snakeSection'), {
+const SnakeSection = dynamic(() => import('components/pages/hello/components/snakeSection'), {
   loading: () => <SnakeSectionLoading />,
 });
 

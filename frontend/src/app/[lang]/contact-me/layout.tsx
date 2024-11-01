@@ -1,4 +1,4 @@
-import ContactMeSideBar from 'components/Pages/contactMe/sidebar';
+import ContactMeSideBar from 'components/pages/contactMe/components/sidebar';
 
 export default function ContactMeLayout({
   children,

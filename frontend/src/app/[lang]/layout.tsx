@@ -6,6 +6,7 @@ import { NextUIProvider } from '@nextui-org/system';
 import { LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
 
 import DictionaryProvider from 'context/dictionaryProvider';
+import ReactQueryProviders from 'context/reactQueryProvider';
 
 import Layout from 'components/UI/Layout';
 
@@ -42,7 +43,9 @@ export default async function RootLayout({
       <body className={`${fira.variable} ${vazir.variable}`}>
         <DictionaryProvider dictionary={dictionary}>
           <NextUIProvider>
-            <Layout lang={lang}>{children}</Layout>
+            <ReactQueryProviders>
+              <Layout lang={lang}>{children}</Layout>
+            </ReactQueryProviders>
           </NextUIProvider>
         </DictionaryProvider>
       </body>
