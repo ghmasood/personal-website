@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { RiExternalLinkFill } from '@remixicon/react';
 
-import CommentedText from 'components/pagess/about/components/commentedText';
+import CommentedText from 'components/pages/about/components/commentedText';
 
 function Certifications() {
   return (

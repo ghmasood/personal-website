@@ -4,9 +4,9 @@ import type { LangsT } from 'locale/dictionaries';
 
 import { appConfig } from 'utils/configs';
 
-import BlogCard from 'components/pagess/blogs/components/blogCard';
-import BlogList from 'components/pagess/blogs/components/blogList';
-import { getPosts } from 'components/pagess/blogs/services';
+import BlogCard from 'components/pages/blogs/components/blogCard';
+import BlogList from 'components/pages/blogs/components/blogList';
+import { getPosts } from 'components/pages/blogs/services';
 
 import type { blogsListRes } from 'types/strapi-backend';
 

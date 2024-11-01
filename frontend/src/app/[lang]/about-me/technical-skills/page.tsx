@@ -1,4 +1,4 @@
-import CommentedText from 'components/pagess/about/components/commentedText';
+import CommentedText from 'components/pages/about/components/commentedText';
 
 function TechSkills() {
   return (
