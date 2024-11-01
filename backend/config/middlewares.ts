@@ -29,7 +29,10 @@ export default [
       },
     },
   },
-  { name: 'strapi::cors', config: { origin: ['*'] } },
+  {
+    name: 'strapi::cors',
+    config: { enabled: true, origin: '*', header: '*' },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
