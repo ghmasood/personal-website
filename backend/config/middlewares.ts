@@ -1,3 +1,5 @@
+import { config } from 'process';
+
 export default [
   'strapi::logger',
   'strapi::errors',
@@ -27,7 +29,7 @@ export default [
       },
     },
   },
-  { name: 'strapi::cors', origin: ['*'] },
+  { name: 'strapi::cors', config: { origin: ['*'] } },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
