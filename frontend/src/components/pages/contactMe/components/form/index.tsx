@@ -1,8 +1,11 @@
 import { Button } from '@nextui-org/button';
 import { Input, Textarea } from '@nextui-org/input';
+import { useMutation } from '@tanstack/react-query';
 
 import { formDataType } from 'app/[lang]/contact-me/page';
 import type { DictT } from 'locale/dictionaries';
+
+import { contactMeFn } from '../../services';
 
 type formDataProps = {
   formData: formDataType;
@@ -10,6 +13,9 @@ type formDataProps = {
   locale: DictT['contactPage'];
 };
 function ContactMeForm({ formData, setFormData, locale }: formDataProps) {
+  //MUTATIONS
+  const submitContactMutation = useMutation({ mutationFn: (data: formDataType) => contactMeFn(data) });
+
   return (
     <div className='flex w-full flex-col items-center justify-center gap-5 border-line xl:w-[40%] xl:border-e'>
       <form className='flex w-[70%] flex-col gap-3'>
@@ -57,7 +63,13 @@ function ContactMeForm({ formData, setFormData, locale }: formDataProps) {
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
         />
-        <Button className='mt-2 bg-accent-blue text-tPrimary' radius='sm'>
+        <Button
+          className='mt-2 bg-accent-blue text-tPrimary'
+          radius='sm'
+          onClick={() => {
+            submitContactMutation.mutate(formData);
+          }}
+        >
           {locale.submit}
         </Button>
       </form>

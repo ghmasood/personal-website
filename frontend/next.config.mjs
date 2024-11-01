@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-
   images: {
     remotePatterns: [
       {
@@ -10,7 +9,6 @@ const nextConfig = {
       {
         hostname: 'passing-gwenneth-gh-masood-ce15deca.koyeb.app',
         protocol: 'https',
-        
       },
     ],
   },
