@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import { useGetDictionaryClient } from 'context/dictionaryProvider';
 
-import ContactMeForm from 'components/pages/contactMe/components/form';
-import FormCode from 'components/pages/contactMe/components/formCode';
+import ContactMeForm from 'components/pagess/contactMe/components/form';
+import FormCode from 'components/pagess/contactMe/components/formCode';
 
 export type formDataType = {
   name: string;
