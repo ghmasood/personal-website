@@ -27,7 +27,7 @@ export default [
       },
     },
   },
-  'strapi::cors',
+  { name: 'strapi:cors', origin: ['*'] },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
