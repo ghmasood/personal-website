@@ -461,12 +461,12 @@ export interface ApiCategorieCategorie extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContacUsContacUs extends Struct.CollectionTypeSchema {
-  collectionName: 'contac_uses';
+export interface ApiContactUsContactUs extends Struct.CollectionTypeSchema {
+  collectionName: 'contact_list';
   info: {
-    displayName: 'Contac-us';
-    pluralName: 'contac-uses';
-    singularName: 'contac-us';
+    displayName: 'Contact-us';
+    pluralName: 'contact-list';
+    singularName: 'contact-us';
   };
   options: {
     draftAndPublish: true;
@@ -479,7 +479,7 @@ export interface ApiContacUsContacUs extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::contac-us.contac-us'
+      'api::contact-us.contact-us'
     > &
       Schema.Attribute.Private;
     message: Schema.Attribute.Text & Schema.Attribute.Required;
@@ -487,7 +487,6 @@ export interface ApiContacUsContacUs extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 32;
-        minLength: 1;
       }>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -1076,7 +1075,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::blog.blog': ApiBlogBlog;
       'api::categorie.categorie': ApiCategorieCategorie;
-      'api::contac-us.contac-us': ApiContacUsContacUs;
+      'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::highscore.highscore': ApiHighscoreHighscore;
       'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;

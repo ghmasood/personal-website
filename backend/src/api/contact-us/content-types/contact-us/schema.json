@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "contac_uses",
+  "collectionName": "contact_list",
   "info": {
-    "singularName": "contac-us",
-    "pluralName": "contac-uses",
-    "displayName": "Contac-us"
+    "singularName": "contact-us",
+    "pluralName": "contact-list",
+    "displayName": "Contact-us"
   },
   "options": {
     "draftAndPublish": true
@@ -14,7 +14,6 @@
     "name": {
       "type": "string",
       "required": true,
-      "minLength": 1,
       "maxLength": 32
     },
     "email": {
