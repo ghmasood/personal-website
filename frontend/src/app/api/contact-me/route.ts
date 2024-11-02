@@ -1,22 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import axios from 'axios';
+
 import { appConfig } from 'utils/configs';
 
 export async function POST(req: NextRequest) {
-  const a = req.body;
-  //   try {
-  //     const aa = await fetch(`${appConfig.main.backAPI}/contact-mes`, {
-  //       method: 'POST',
-  //       headers: {
-  //         Authentication: `Bearer ${appConfig.main.backToken}`,
-  //         Accept: '*/*',
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ name: 'a', email: 'b', message: 'c' }),
-  //     });
-  //     console.log(aa.headers);
-  //   } catch (error) {
-  //     console.log(error);
-  //     return new NextResponse(JSON.stringify({ message: 'something wrong' }), { status: 500 });
-  //   }
+  const axiosInstance = axios.create({
+    baseURL: appConfig.main.backAPI,
+    headers: {
+      Authorization: `Bearer ${appConfig.main.backToken}`,
+      Accept: '*/*',
+      'Content-Type': 'application/json',
+    },
+  });
+  const body = await req.json();
+  try {
+    const response = await axiosInstance.post('/contact-mes', body);
+    return NextResponse.json(response.data, { status: response.status });
+  } catch (error: any) {
+    return NextResponse.json(error.response.data.error, { status: error.status });
+  }
 }

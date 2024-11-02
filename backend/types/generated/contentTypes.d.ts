@@ -464,6 +464,7 @@ export interface ApiCategorieCategorie extends Struct.CollectionTypeSchema {
 export interface ApiContactMeContactMe extends Struct.CollectionTypeSchema {
   collectionName: 'contact_mes';
   info: {
+    description: '';
     displayName: 'Contact-me';
     pluralName: 'contact-mes';
     singularName: 'contact-me';
@@ -482,11 +483,16 @@ export interface ApiContactMeContactMe extends Struct.CollectionTypeSchema {
       'api::contact-me.contact-me'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.Text & Schema.Attribute.Required;
+    message: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 5;
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 32;
+        minLength: 3;
       }>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;

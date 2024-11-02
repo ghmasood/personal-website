@@ -4,7 +4,8 @@
   "info": {
     "singularName": "contact-me",
     "pluralName": "contact-mes",
-    "displayName": "Contact-me"
+    "displayName": "Contact-me",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,7 +15,8 @@
     "name": {
       "type": "string",
       "maxLength": 32,
-      "required": true
+      "required": true,
+      "minLength": 3
     },
     "email": {
       "type": "email",
@@ -22,7 +24,8 @@
     },
     "message": {
       "type": "text",
-      "required": true
+      "required": true,
+      "minLength": 5
     }
   }
 }

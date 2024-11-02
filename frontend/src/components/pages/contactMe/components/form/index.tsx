@@ -14,8 +14,10 @@ type formDataProps = {
 };
 function ContactMeForm({ formData, setFormData, locale }: formDataProps) {
   //MUTATIONS
-  const submitContactMutation = useMutation({ mutationFn: (data: formDataType) => contactMeFn(data) });
-
+  const submitContactMutation = useMutation({
+    mutationKey: ['submit-msg'],
+    mutationFn: (data: formDataType) => contactMeFn(data),
+  });
   return (
     <div className='flex w-full flex-col items-center justify-center gap-5 border-line xl:w-[40%] xl:border-e'>
       <form className='flex w-[70%] flex-col gap-3'>
