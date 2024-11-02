@@ -9,6 +9,7 @@ import SnakeSectionLoading from 'components/pages/hello/components/snakeSection/
 
 const SnakeSection = dynamic(() => import('components/pages/hello/components/snakeSection'), {
   loading: () => <SnakeSectionLoading />,
+  ssr: true,
 });
 
 type Params = Promise<{ lang: LangsT }>;
@@ -25,7 +26,7 @@ export default async function Home(props: { params: Params }) {
   return (
     <div className='relative flex h-full items-center justify-evenly gap-5 px-10'>
       <IntroSection locale={dict.helloPage} />
-      <SnakeSection className='hidden lg:block' highScore={highScore} />
+      <SnakeSection className='hidden lg:block' highScore={highScore} locale={dict.helloPage} />
 
       {/* absolute shadows */}
       <div className='absolute start-5 top-[15%] h-1/3 w-1/4 -rotate-12 bg-accent-green opacity-30 blur-3xl lg:hidden' />

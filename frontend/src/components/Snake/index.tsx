@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, memo, useCallback, useEffect, useRef, useState } from 'react';
 
 import { Button } from '@nextui-org/button';
 
@@ -312,4 +312,4 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth, highScore }
   );
 };
 
-export default React.memo(Snake);
+export default memo(Snake);
