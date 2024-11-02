@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
 const nextApi: AxiosInstance = axios.create({
@@ -26,6 +28,7 @@ nextApi.interceptors.response.use(
     return response;
   },
   (error) => {
+    toast(`${error.response?.data.name}: ${error.response.data.message}`, { type: 'error' });
     console.error('Response error:', error.response?.data || error.message);
 
     // Handle errors based on status, e.g., 401 for auth, retry logic, etc.
