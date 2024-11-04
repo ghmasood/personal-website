@@ -2,6 +2,8 @@ import { toast } from 'react-toastify';
 
 import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
+import { appConfig } from './configs';
+
 const nextApi: AxiosInstance = axios.create({
   baseURL: '/api', // Points to Next.js API routes
   headers: { Accept: '*/*', 'Content-Type': 'application/json' },

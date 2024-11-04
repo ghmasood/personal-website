@@ -10,6 +10,7 @@
     "projects": "_projects",
     "blog": "_blogs",
     "contact": "_contact_me",
+    "changeLang": "_change_language",
     "downloadCV": "download my cv"
   },
   "helloPage": {

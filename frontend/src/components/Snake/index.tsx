@@ -1,14 +1,16 @@
 'use client';
 
 import { Dispatch, SetStateAction, memo, useCallback, useEffect, useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import { Button } from '@nextui-org/button';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import clsx from 'clsx';
 
 import { useGetDictionaryClient } from 'context/dictionaryProvider';
 
-import { appConfig } from 'utils/configs';
+import { updateHighScoreFn } from 'components/pages/hello/services';
 
 type Props = {
   points: number;
@@ -58,6 +60,19 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth, highScore }
 
   //functionally label snake pieces (bang) and return
   type Bang = `bang$${number}`;
+
+  //REACT QUERY
+  const queryClient = useQueryClient();
+  const updateScoreMutate = useMutation({
+    mutationKey: ['highscore'],
+    mutationFn: (score: number) => updateHighScoreFn(score),
+    onSuccess: () => {
+      queryClient
+        .invalidateQueries({ queryKey: ['highscore'] })
+        .then(() => toast.success('Congratulations! You have reached a new record'));
+    },
+  });
+
   const pieces = (): (Bang | 'fruit' | '')[] => {
     const arr: (Bang | 'fruit' | '')[] = [];
     for (let i = 0; i < 600; i++) {
@@ -144,18 +159,12 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth, highScore }
     for (let k = 0; k < snake.length; k++) {
       totalArr = [...totalArr, ...snake[k].part];
     }
-    const head = snake[0].part[0];
-    if (totalArr.filter((item) => item === head).length >= 2) {
-      if (points > highScore) {
-        fetch(`${appConfig.main.backAPI}/highscore`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            data: { score: points },
-          }),
-        });
-      }
+    if (totalArr.filter((item) => item === snake[0].part[0]).length >= 2) {
       setGameOver(true);
+      if (points > highScore) {
+        console.log('first');
+        updateScoreMutate.mutate(points);
+      }
     }
 
     if (!gameOver && !firstStart) {
@@ -251,7 +260,7 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth, highScore }
         document.removeEventListener('keydown', handleKeydown);
       };
     }
-  }, [turn, snake, direction, points, fruit, gameOver, firstStart, setPoints]);
+  }, [turn, snake, direction, points, fruit, firstStart, setPoints]);
 
   return (
     <div className='relative !bg-surfacePrimary/85'>

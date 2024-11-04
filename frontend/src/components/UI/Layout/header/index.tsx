@@ -29,11 +29,12 @@ function Header({ locale }: { locale: DictT }) {
 
   return (
     <header className='relative flex h-14 items-center rounded-t-lg border border-line bg-surfacePrimary font-[450]'>
-      <span
-        className={`group relative shrink-0 select-none border-line px-3 py-4 align-middle text-tSecondary transition-colors duration-[3s] hover:text-tPrimary md:w-[18rem] md:border-e`}
-      >
-        {locale.layout.title}
-      </span>
+      <div className='flex shrink-0 select-none items-center gap-1 border-line px-3 py-4 align-middle text-tSecondary transition-colors duration-[3s] hover:text-tPrimary md:w-[18rem] md:border-e'>
+        <div className='absolute aspect-[1.218] h-9'>
+          <Image src={'/images/logo.svg'} fill alt={'logo'} />
+        </div>
+        <span className='relative start-14'>{locale.layout.title}</span>
+      </div>
 
       {pathName === '/' ? (
         <></>
@@ -52,7 +53,7 @@ function Header({ locale }: { locale: DictT }) {
             {item.title}
             <div
               className={clsx(
-                'absolute bottom-0 start-0 h-0.5 w-full bg-accent-blue duration-700',
+                'absolute bottom-0 start-0 h-0.5 w-full bg-accent-orange duration-700',
                 item.path.includes(pathName.toString().split('/')[2]) ? 'opacity-100' : 'opacity-0'
               )}
             />
@@ -60,11 +61,13 @@ function Header({ locale }: { locale: DictT }) {
         ))
       )}
       <Link href={redirectedPathName()} className='ms-auto hidden border-s border-line px-1.5 py-4 md:block'>
-        {locale.settings.language === 'en' ? (
-          <Image src={'/images/fa.svg'} width={32} height={20} alt={'persian flag'} className='rounded-md opacity-65' />
-        ) : (
-          <Image src={'/images/en.svg'} width={32} height={20} alt={'english flag'} className='rounded-md opacity-65' />
-        )}
+        <Image
+          src={locale.settings.language === 'en' ? '/images/fa.svg' : '/images/en.svg'}
+          width={32}
+          height={20}
+          alt={'languages flag'}
+          className='rounded-md opacity-65'
+        />
       </Link>
       <div
         className='ms-auto px-2 text-tSecondary hover:text-tPrimary active:text-tPrimary md:hidden'
@@ -83,18 +86,27 @@ function Header({ locale }: { locale: DictT }) {
           <Link
             key={item.title}
             href={item.path}
-            className='border-b border-line px-2 py-2 text-tSecondary active:text-tPrimary'
+            className='border-b border-line p-2 text-tSecondary active:text-tPrimary'
           >
             {item.title}
           </Link>
         ))}
-        <Link href={redirectedPathName()} className='w-full border-b border-line px-0.5'>
-          {locale.settings.language === 'en' ? (
-            <Image src={'/images/fa.svg'} width={50} height={100} alt={''} />
-          ) : (
-            <Image src={'/images/en.svg'} width={40} height={100} alt={''} />
-          )}
+        <Link href={redirectedPathName()} className='border-b border-line p-2 text-tSecondary active:text-tPrimary'>
+          <div className='flex items-center justify-between gap-2'>
+            <span>{locale.layout.changeLang}</span>
+            <Image
+              src={locale.settings.language === 'en' ? '/images/fa.svg' : '/images/en.svg'}
+              width={30}
+              height={10}
+              className='rounded-md opacity-65'
+              alt={'languages flag'}
+            />
+          </div>
         </Link>
+        <div className='relative mt-auto aspect-[1.218] h-36 opacity-65'>
+          <Image src={'/images/logo.svg'} fill alt={'logo'} />
+        </div>
+        <div className='mx-auto mb-12 select-none pt-3 font-[100] text-accent-orange opacity-50'>learn together</div>
       </div>
     </header>
   );

@@ -3,7 +3,7 @@ export type ReposList = MinimalRepository[];
 /**
  * Minimal Repository
  */
-export interface MinimalRepository {
+export type MinimalRepository = {
   id: number;
   node_id: string;
   name: string;
@@ -137,11 +137,11 @@ export interface MinimalRepository {
     [k: string]: unknown;
   } | null;
   [k: string]: unknown;
-}
+};
 /**
  * A GitHub user.
  */
-export interface SimpleUser {
+export type SimpleUser = {
   name?: string | null;
   email?: string | null;
   login: string;
@@ -164,15 +164,15 @@ export interface SimpleUser {
   site_admin: boolean;
   starred_at?: string;
   [k: string]: unknown;
-}
+};
 /**
  * Code Of Conduct
  */
-export interface CodeOfConduct {
+export type CodeOfConduct = {
   key: string;
   name: string;
   url: string;
   body?: string;
   html_url: string | null;
   [k: string]: unknown;
-}
+};

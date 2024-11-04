@@ -1,3 +1,11 @@
+export type highScoreResT = {
+  data: {
+    score: 16;
+    updatedAt: '2024-11-02T19:21:06.040Z';
+  };
+};
+
+/////////old////////////////
 export type blogItem = {
   id: number;
   fa_title: string;
