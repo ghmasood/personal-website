@@ -22,7 +22,7 @@ export default async function MyProjects(props: { params: Params }) {
       {data.map((repo) => (
         <div
           key={repo.id}
-          className='group relative flex basis-full flex-col justify-between gap-3 overflow-hidden rounded-md border border-line bg-surfaceSecondary p-3 duration-[2s] hover:scale-[1.005] lg:lg:basis-[calc((100%_-_1.5rem)/2)] xl:basis-[calc((100%_-_3rem)/3)] min-[1800px]:basis-[calc((100%_-_4.5rem)/4)]'
+          className='3xl:basis-[calc((100%_-_4.5rem)/4)] group relative flex basis-full flex-col justify-between gap-3 overflow-hidden rounded-md border border-line bg-surfaceSecondary p-3 duration-[2s] hover:scale-[1.005] lg:lg:basis-[calc((100%_-_1.5rem)/2)] xl:basis-[calc((100%_-_3rem)/3)]'
         >
           <div className='flex items-center justify-between gap-1'>
             <Link href={repo.html_url} target='_blank'>

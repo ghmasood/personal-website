@@ -2,6 +2,8 @@ import { nextui } from '@nextui-org/theme';
 
 import type { Config } from 'tailwindcss';
 
+const { screens } = require('tailwindcss/defaultTheme');
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -31,6 +33,14 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      screens: {
+        xs: '420',
+        ...screens,
+        '3xl': '1600px',
+        lh: {
+          raw: '(max-height: 500px)',
+        },
       },
       keyframes: {
         blink: {

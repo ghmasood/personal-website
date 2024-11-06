@@ -28,12 +28,12 @@ async function Layout({ children, lang }: LayoutPropsT) {
         pauseOnHover
         theme='dark'
         toastClassName={
-          'shadow shadow-black !bg-line mb-[2.5rem] end-[0.5rem] md:mb-[3.5rem] md:end-[1.75rem] lg:mb-[5.5rem] lg:end-[3.5rem] min-[1600px]:mb-[7.5rem] min-[1600px]:end-[5.5rem]'
+          'shadow shadow-black !bg-line mb-[2.5rem] end-[0.5rem] md:mb-[3.5rem] md:end-[1.75rem] lg:mb-[5.5rem] lg:end-[3.5rem] 3xl:mb-[7.5rem] 3xl:end-[5.5rem]'
         }
         transition={Slide}
       />
       <Header locale={dict} />
-      <main className='h-[calc(100dvh_-_7.5rem)] overflow-x-auto overflow-y-auto border-x border-line bg-surfacePrimary md:h-[calc(100dvh_-_9.5rem)] lg:h-[calc(100dvh_-_13.5rem)] min-[1600px]:!h-[calc(100dvh_-_17.5rem)]'>
+      <main className='3xl:!h-[calc(100dvh_-_17.5rem)] h-[calc(100dvh_-_7.5rem)] overflow-x-auto overflow-y-auto border-x border-line bg-surfacePrimary md:h-[calc(100dvh_-_9.5rem)] lg:h-[calc(100dvh_-_13.5rem)]'>
         {children}
       </main>
       <Footer locale={dict?.layout ?? {}} />
