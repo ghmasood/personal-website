@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Fira_Code, Vazirmatn } from 'next/font/google';
 
+import { GoogleTagManager } from '@next/third-parties/google';
 import { NextUIProvider } from '@nextui-org/system';
 
 import { LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
@@ -37,6 +38,7 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+      <GoogleTagManager gtmId='G-Y3D71YB47T' />
       <body className={`${fira.variable} ${vazir.variable}`}>
         <DictionaryProvider dictionary={dictionary}>
           <NextUIProvider>
