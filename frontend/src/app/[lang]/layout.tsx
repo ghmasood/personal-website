@@ -38,8 +38,7 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
-      <GoogleTagManager gtmId='G-55N8P7P7' />
-      <GoogleAnalytics gaId='G-Y3D71YB47T' />
+      <GoogleTagManager gtmId='GT-55N8P7P7' />
       <body className={`${fira.variable} ${vazir.variable}`}>
         <DictionaryProvider dictionary={dictionary}>
           <NextUIProvider>
