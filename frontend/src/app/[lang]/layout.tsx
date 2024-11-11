@@ -37,9 +37,6 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
-      <head>
-        <meta name='robots' content='noindex, nofollow' />
-      </head>
       <body className={`${fira.variable} ${vazir.variable}`}>
         <DictionaryProvider dictionary={dictionary}>
           <NextUIProvider>

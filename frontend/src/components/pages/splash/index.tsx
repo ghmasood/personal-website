@@ -12,7 +12,7 @@ function SplashPage() {
           <div className='absolute -bottom-24 -end-24 h-2/3 w-1/2 rotate-12 bg-accent-blue opacity-35 blur-[100px]'></div>
         </div>
         <div className='z-[1] flex w-full flex-col gap-2 pb-4 text-white opacity-20 drop-shadow-[0_4px_1px_rgba(0,0,0,1)] xl:gap-4 xl:pb-12'>
-          <span className='text-5xl font-black xl:text-[5.5rem] xs:text-[4rem]'>masoud.dev</span>
+          <span className='text-5xl font-black xl:text-[5.5rem] xs:text-[4rem]'>masoud.codes</span>
           <span className='text-3xl font-extralight xl:text-[3rem] xs:text-[2.2rem]'>{'{learnTogether}'}</span>
         </div>
       </div>
