@@ -21,7 +21,7 @@ function ContactMeSideBar() {
   const dict = useGetDictionaryClient();
   const locale = dict.contactPage;
   return (
-    <div className='flex shrink-0 flex-col gap-2 border-b border-line p-3 text-sm md:w-[18rem] md:border-e'>
+    <div className='flex shrink-0 flex-col gap-2 border-b border-line p-3 text-sm md:w-[16.5rem] md:border-b-0 md:border-e'>
       <div className='flex flex-col gap-2 text-tPrimary'>
         <div className='flex items-center gap-0.5'>
           <RiArrowRightSLine className='rtl:rotate-180' />
@@ -49,7 +49,7 @@ function ContactMeSideBar() {
         <div className='flex flex-col gap-2 ps-5 font-fira font-[300] text-tSecondary'>
           <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
             <RiLinkedinBoxFill size={'1.25rem'} />
-            Linkedin
+            linkedin
           </Link>
           <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
             <RiGithubFill size={'1.25rem'} />
@@ -65,15 +65,15 @@ function ContactMeSideBar() {
           </Link>
           <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
             <RiTwitterXFill size={'1.25rem'} />
-            Twitter
+            twitter
           </Link>
           <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
             <RiWhatsappFill size={'1.25rem'} />
-            Whatsapp
+            whatsapp
           </Link>
           <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
             <RiTelegramFill size={'1.25rem'} />
-            Telegram
+            telegram
           </Link>
         </div>
       </div>

@@ -29,37 +29,36 @@ function Header({ locale }: { locale: DictT }) {
 
   return (
     <header className='relative flex h-14 items-center rounded-t-lg border border-line bg-surfacePrimary font-[450]'>
-      <div className='flex shrink-0 select-none items-center gap-1 border-line px-3 py-4 align-middle text-tSecondary transition-colors duration-[3s] hover:text-tPrimary md:w-[18rem] md:border-e'>
+      <Link
+        href={`/${locale.settings.language}/hello`}
+        className='flex shrink-0 select-none items-center gap-1 border-line px-3 py-4 align-middle text-tSecondary transition-colors duration-[3s] hover:text-tPrimary md:w-[16.5rem] md:border-e'
+      >
         <div className='absolute aspect-[1.218] h-9'>
           <Image src={'/images/logo.svg'} fill alt={'logo'} />
         </div>
         <span className='relative start-14'>{locale.layout.title}</span>
-      </div>
+      </Link>
 
-      {pathName === '/' ? (
-        <></>
-      ) : (
-        menuGenerator(locale.layout).map((item) => (
-          <Link
-            href={`/${locale.settings.language}${item.path}`}
-            key={item.title}
+      {menuGenerator(locale.layout).map((item) => (
+        <Link
+          href={`/${locale.settings.language}${item.path}`}
+          key={item.title}
+          className={clsx(
+            'relative hidden truncate border-e border-line px-2.5 py-4 duration-500 md:block',
+            item.path.includes(pathName.toString().split('/')[1])
+              ? 'text-tPrimary'
+              : 'text-tSecondary hover:text-tPrimary/50'
+          )}
+        >
+          {item.title}
+          <div
             className={clsx(
-              'relative hidden truncate border-e border-line px-3 py-4 duration-500 md:block',
-              item.path.includes(pathName.toString().split('/')[1])
-                ? 'text-tPrimary'
-                : 'text-tSecondary hover:text-tPrimary/50'
+              'absolute bottom-0 start-0 h-0.5 w-full bg-accent-orange duration-700',
+              item.path.includes(pathName.toString().split('/')[2]) ? 'opacity-100' : 'opacity-0'
             )}
-          >
-            {item.title}
-            <div
-              className={clsx(
-                'absolute bottom-0 start-0 h-0.5 w-full bg-accent-orange duration-700',
-                item.path.includes(pathName.toString().split('/')[2]) ? 'opacity-100' : 'opacity-0'
-              )}
-            />
-          </Link>
-        ))
-      )}
+          />
+        </Link>
+      ))}
       <Link href={redirectedPathName()} className='ms-auto hidden border-s border-line px-1.5 py-4 md:block'>
         <Image
           src={locale.settings.language === 'en' ? '/images/fa.svg' : '/images/en.svg'}

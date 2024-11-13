@@ -19,8 +19,8 @@ function ContactMeForm({ formData, setFormData, locale }: formDataProps) {
     mutationFn: (data: formDataType) => contactMeFn(data),
   });
   return (
-    <div className='flex w-full flex-col items-center justify-center gap-5 border-line xl:w-[40%] xl:border-e'>
-      <form className='flex w-[70%] flex-col gap-3'>
+    <div className='flex w-full flex-col items-center justify-center gap-5 border-line xl:min-w-[26.25rem] xl:max-w-[26.25rem] xl:border-e'>
+      <form className='flex w-[85%] flex-col gap-3'>
         <Input
           classNames={{
             label: '!text-tSecondary !font-[450]',
