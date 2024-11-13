@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: '*.gh-masoud.ir',
+        hostname: '*.*',
       },
       {
         hostname: 'passing-gwenneth-gh-masood-ce15deca.koyeb.app',

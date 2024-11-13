@@ -16,11 +16,11 @@ function BlogList({ lang }: Props) {
   });
 
   return (
-    <div className='flex flex-wrap gap-4'>
+    <div className='flex flex-wrap gap-4 p-4 text-tPrimary'>
       {data?.map((blog: any) => (
-        <div className='flex basis-[calc((100%_-_2rem)/3)] flex-col rounded-lg bg-accent-purple p-2' key={blog.id}>
+        <div className='flex basis-[calc((100%_-_2rem)/3)] flex-col rounded-lg border border-line p-2' key={blog.id}>
           <span className='text-xl font-black'>{blog.title}</span>
-          <span>{blog.body}</span>
+          <span className='text-xs'>{blog.body}</span>
         </div>
       ))}
     </div>
