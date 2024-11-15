@@ -1,3 +1,7 @@
+'use client';
+
+import { useRef } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -14,6 +18,8 @@ function PostCategoryCard({
   className?: string;
   lang: LangsT;
 }) {
+  //REF
+  const imgRef = useRef<HTMLImageElement>(null);
   return (
     <Link
       href={`/${lang}/blogs/category/${slug}`}
@@ -28,14 +34,16 @@ function PostCategoryCard({
       }}
     >
       <Image
+        sizes={'auto'}
+        ref={imgRef}
         src={`/images/blog-cats/masoud-ghanbarzadeh-${slug}.jpg`}
+        quality={85}
         fill
         alt={slug}
-        objectFit='cover'
-        objectPosition='right'
-        className='opacity-0 transition-opacity duration-700'
-        onLoadingComplete={(img) => {
-          img.classList.remove('opacity-0');
+        loading='lazy'
+        className='object-cover object-right opacity-0 transition-opacity duration-700'
+        onLoad={() => {
+          imgRef.current?.classList.remove('opacity-0');
         }}
       />
       <span

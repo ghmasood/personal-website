@@ -7,7 +7,7 @@ function HelloPage({ locale }: { locale: DictT['helloPage'] }) {
   return (
     <div className='relative flex h-full items-center justify-evenly gap-5 px-10'>
       <IntroSection locale={locale} />
-      <SnakeSection className='hidden lg:block' locale={locale} />
+      <SnakeSection className='hidden animate-[appearance-in_550ms_ease-out_normal_both] lg:block' locale={locale} />
 
       {/* absolute shadows */}
       <div className='absolute start-5 top-[15%] h-1/3 w-1/4 -rotate-12 bg-accent-green opacity-30 blur-3xl lg:hidden' />

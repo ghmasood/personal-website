@@ -20,7 +20,8 @@ function ContactMeForm({ formData, setFormData, locale }: formDataProps) {
   });
   return (
     <div className='flex w-full flex-col items-center justify-center gap-5 border-line xl:min-w-[26.25rem] xl:max-w-[26.25rem] xl:border-e'>
-      <form className='flex w-[85%] flex-col gap-3'>
+      <form className='flex w-[85%] flex-col gap-6'>
+        <span className='text-tSecondary'>{`You can say everything's to me...:}`}</span>
         <Input
           classNames={{
             label: '!text-tSecondary !font-[450]',
