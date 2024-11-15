@@ -14,7 +14,7 @@ function BlogsSideBar() {
     settings: { language },
   } = useGetDictionaryClient();
   return (
-    <div className='flex shrink-0 flex-col items-center gap-4 border-b border-line p-3 text-tSecondary md:h-full md:border-b-0 md:border-e'>
+    <div className='flex shrink-0 flex-col items-center gap-4 border-b border-line p-4 text-tSecondary md:h-full md:w-[16.5rem] md:border-b-0 md:border-e'>
       <Input
         classNames={{
           label: '!text-tSecondary !font-[450]',
@@ -26,14 +26,14 @@ function BlogsSideBar() {
         placeholder='search something...'
         startContent={<RiSearchLine className='text-tSecondary' />}
       />
-      <div className='flex w-full flex-wrap items-center gap-2 overflow-scroll scrollbar-hide md:flex-col md:flex-nowrap'>
+      <div className='relative flex w-full items-center gap-2 overflow-scroll scrollbar-hide md:flex-col'>
         {mockTemp.data.map((category) => (
           <PostCategoryCard
             lang={language as LangsT}
             key={category.id}
             title={category.title_en}
             slug={category.slug}
-            className='basis-[calc((100%_-_0.5rem)/2)] sm:!basis-[calc((100%_-_2rem)/5)] xs:basis-[calc((100%_-_1rem)/3)]'
+            className='min-w-32'
           />
         ))}
       </div>

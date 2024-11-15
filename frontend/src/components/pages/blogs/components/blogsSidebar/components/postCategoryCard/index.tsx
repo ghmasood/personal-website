@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { LangsT } from 'locale/dictionaries';
@@ -16,16 +17,29 @@ function PostCategoryCard({
   return (
     <Link
       href={`/${lang}/blogs/category/${slug}`}
-      className={`border-0.5 relative flex min-h-[4.375rem] gap-2 rounded-md md:w-[17.5rem] ${className}`}
+      className={`ov relative flex aspect-[2.2] w-full gap-2 overflow-hidden rounded-md border border-line md:aspect-[4] ${className}`}
       style={{
-        backgroundImage: `url(/images/blog-cats/masoud-ghanbarzadeh-${slug}.jpg)`,
-        backgroundSize: 'cover',
+        backgroundImage: `url(/images/logo.svg)`,
+        backgroundSize: '20%',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'right',
+        backgroundPosition: 'center',
+        backgroundColor: '#1e2d3d',
+        boxShadow: '4.1px 4.2px 4.2px hsl(0deg 0% 0% / 0.27)',
       }}
     >
+      <Image
+        src={`/images/blog-cats/masoud-ghanbarzadeh-${slug}.jpg`}
+        fill
+        alt={slug}
+        objectFit='cover'
+        objectPosition='right'
+        className='opacity-0 transition-opacity duration-700'
+        onLoadingComplete={(img) => {
+          img.classList.remove('opacity-0');
+        }}
+      />
       <span
-        className={`absolute bottom-2 left-2 z-[1] hidden text-xs font-[600] opacity-80 md:inline ${slug === 'javascript' || slug === 'deploy' ? 'text-black' : 'text-white'}`}
+        className={`absolute bottom-1.5 left-1.5 z-[1] hidden text-xs font-[600] opacity-80 md:inline ltr:w-1/2 ${slug === 'javascript' || slug === 'deploy' ? 'text-black' : 'text-white'}`}
       >
         {title}
       </span>

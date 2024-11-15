@@ -8,7 +8,7 @@ export default function blogsLayout({
   return (
     <div className='flex h-full flex-col md:flex-row'>
       <BlogsSideBar />
-      <>{children}</>
+      <div className='overflow-auto'>{children}</div>
     </div>
   );
 }
