@@ -27,6 +27,6 @@ export async function getHighScoreServerFn() {
 }
 
 export async function updateHighScoreFn(score: number) {
-  await nextApi.put('/highscore', { score });
+  await nextApi.put('/update-score', { score });
   NextResponse.next();
 }

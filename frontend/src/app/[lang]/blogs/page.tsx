@@ -2,11 +2,8 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 
 import type { LangsT } from 'locale/dictionaries';
 
-import BlogCard from 'components/pages/blogs/components/blogCard';
 import BlogList from 'components/pages/blogs/components/blogList';
-import { getPosts } from 'components/pages/blogs/services';
-
-import type { blogsListRes } from 'types/strapi-backend';
+import { getBlogsServerFn } from 'components/pages/blogs/services';
 
 type Params = Promise<{ lang: LangsT }>;
 export default async function Blogs(props: { params: Params }) {
@@ -17,13 +14,15 @@ export default async function Blogs(props: { params: Params }) {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ['posts'],
-    queryFn: getPosts,
+    queryKey: ['posts', ''],
+    queryFn: () => getBlogsServerFn(),
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <BlogList lang={lang} />
+      <div className='p-4'>
+        <BlogList lang={lang} />
+      </div>
     </HydrationBoundary>
   );
 }
