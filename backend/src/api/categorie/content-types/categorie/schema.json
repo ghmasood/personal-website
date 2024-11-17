@@ -25,11 +25,11 @@
       "type": "string",
       "required": true
     },
-    "descrption_fa": {
+    "description_fa": {
       "type": "text",
       "required": true
     },
-    "descrption_en": {
+    "description_en": {
       "type": "text",
       "required": true
     },
