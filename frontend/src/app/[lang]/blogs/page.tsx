@@ -14,7 +14,7 @@ export default async function Blogs(props: { params: Params }) {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ['posts', ''],
+    queryKey: ['blogs', ''],
     queryFn: () => getBlogsServerFn(),
   });
 

@@ -1,4 +1,4 @@
-import AboutSideBar from 'components/pages/about/components/sideBar';
+import AboutSideBar from 'components/pages/about/components/aboutSideBar';
 
 export default function AboutMeLayout({
   children,

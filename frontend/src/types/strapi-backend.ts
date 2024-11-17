@@ -70,6 +70,7 @@ type CategoryT = {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  blogs?: { count: number };
 };
 
 export type BlogT = {
@@ -98,8 +99,15 @@ type PaginationT = {
   total: number;
 };
 
-export type BlogResponseT = {
+export type BlogsResponseT = {
   data: BlogT[];
+  meta: {
+    pagination: PaginationT;
+  };
+};
+
+export type CategoriesResponseT = {
+  data: CategoryT[];
   meta: {
     pagination: PaginationT;
   };

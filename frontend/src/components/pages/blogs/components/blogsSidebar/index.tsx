@@ -21,7 +21,7 @@ function BlogsSideBar() {
   //API CALL
   const { data } = useQuery({ queryKey: ['category'], queryFn: () => getCategoriesFn() });
   return (
-    <div className='flex shrink-0 flex-col items-center gap-4 border-b border-line p-4 text-tSecondary md:h-full md:w-[16.5rem] md:border-b-0 md:border-e'>
+    <aside className='flex shrink-0 flex-col items-center gap-4 border-b border-line p-4 text-tSecondary md:h-full md:w-[16.5rem] md:border-b-0 md:border-e'>
       <Input
         classNames={{
           label: '!text-tSecondary !font-[450]',
@@ -34,17 +34,20 @@ function BlogsSideBar() {
         startContent={<RiSearchLine className='text-tSecondary' />}
       />
       <div className='relative flex w-full items-center gap-2 overflow-scroll scrollbar-hide md:flex-col'>
-        {data?.data.map((category) => (
-          <PostCategoryCard
-            lang={language as LangsT}
-            key={category.id}
-            title={category.title_en}
-            slug={category.slug}
-            className='min-w-32'
-          />
-        ))}
+        {data?.data
+          .slice()
+          .sort((a, b) => (b.blogs?.count ?? 0) - (a.blogs?.count ?? 0))
+          .map((category) => (
+            <PostCategoryCard
+              lang={language as LangsT}
+              key={category.id}
+              title={category.title_en}
+              slug={category.slug}
+              className='min-w-32'
+            />
+          ))}
       </div>
-    </div>
+    </aside>
   );
 }
 

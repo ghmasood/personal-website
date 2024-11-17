@@ -4,7 +4,7 @@ import { appConfig } from 'utils/configs';
 
 import nextApi from 'utils/axiosConfig';
 
-import type { BlogResponseT } from 'types/strapi-backend';
+import type { BlogsResponseT, CategoriesResponseT } from 'types/strapi-backend';
 
 /////  BLOGS  /////
 
@@ -34,14 +34,28 @@ export async function getBlogsServerFn(slug?: string) {
   const response = await backApi.get('/blogs', {
     params: blogParamsGenerator(slug),
   });
-  return response.data as BlogResponseT;
+  return response.data as BlogsResponseT;
 }
 
 export async function getBlogsFn(slug?: string) {
   const res = await nextApi.get('/blogs', {
     params: blogParamsGenerator(slug),
   });
-  return res.data as BlogResponseT;
+  return res.data as BlogsResponseT;
+}
+
+export async function getSingleBlogFn(slug: string) {
+  const res = await nextApi.get('/blogs', {
+    params: {
+      populate: '*',
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+    },
+  });
+  return res.data as BlogsResponseT;
 }
 
 /////  CATEGORIES  /////
@@ -55,11 +69,13 @@ export async function getCategoriesServerFn() {
       'Content-Type': 'application/json',
     },
   });
-  const response = await backApi.get('/categories');
-  return response.data as BlogResponseT;
+  const response = await backApi.get('/categories', { params: { populate: { blogs: { count: true } }, sort: ['id'] } });
+  return response.data as CategoriesResponseT;
 }
 
 export async function getCategoriesFn() {
-  const res = await nextApi.get('/categories');
-  return res.data as BlogResponseT;
+  const res = await nextApi.get('/categories', {
+    params: { populate: { blogs: { count: true } } },
+  });
+  return res.data as CategoriesResponseT;
 }

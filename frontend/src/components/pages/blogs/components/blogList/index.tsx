@@ -13,7 +13,7 @@ type Props = { lang: LangsT; category?: string };
 
 function BlogList({ lang, category = '' }: Props) {
   const { data } = useQuery({
-    queryKey: ['posts', category],
+    queryKey: ['blogs', category],
     queryFn: () => getBlogsFn(category),
   });
 
