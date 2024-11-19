@@ -20,8 +20,9 @@ function BlogsSideBar() {
 
   //API CALL
   const { data } = useQuery({ queryKey: ['category'], queryFn: () => getCategoriesFn() });
+
   return (
-    <aside className='flex shrink-0 flex-col items-center gap-4 border-b border-line p-4 text-tSecondary md:h-full md:w-[16.5rem] md:border-b-0 md:border-e'>
+    <aside className='flex shrink-0 flex-col items-center gap-3 border-b border-line p-4 text-tSecondary md:h-full md:w-[16.5rem] md:border-b-0 md:border-e'>
       <Input
         classNames={{
           label: '!text-tSecondary !font-[450]',
@@ -33,7 +34,7 @@ function BlogsSideBar() {
         placeholder='search something...'
         startContent={<RiSearchLine className='text-tSecondary' />}
       />
-      <div className='relative flex w-full items-center gap-2 overflow-scroll scrollbar-hide md:flex-col'>
+      <div className='relative flex w-full items-center gap-x-4 gap-y-1 overflow-scroll scrollbar-hide md:flex-col'>
         {data?.data
           .slice()
           .sort((a, b) => (b.blogs?.count ?? 0) - (a.blogs?.count ?? 0))

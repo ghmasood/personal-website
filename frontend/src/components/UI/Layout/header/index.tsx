@@ -77,20 +77,23 @@ function Header({ locale }: { locale: DictT }) {
       <div
         onClick={() => setIsMenuOpen(false)}
         className={clsx(
-          'absolute end-0 start-0 top-[3.45rem] z-[100] flex h-[calc(100dvh_-_7.5rem)] flex-col border-line bg-surfacePrimary duration-700 md:hidden',
-          isMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
+          'absolute end-0 start-0 top-[3.45rem] z-[100] flex flex-col overflow-hidden border-line backdrop-blur-md duration-500 md:hidden',
+          isMenuOpen ? 'h-[calc(100dvh_-_7.5rem)] opacity-100' : 'pointer-events-none h-0 opacity-0'
         )}
       >
         {menuGenerator(locale.layout).map((item) => (
           <Link
             key={item.title}
             href={item.path}
-            className='border-b border-line p-2 text-tSecondary active:text-tPrimary'
+            className='select-none border-b border-line bg-surfacePrimary p-2 text-tSecondary active:text-tPrimary'
           >
             {item.title}
           </Link>
         ))}
-        <Link href={redirectedPathName()} className='border-b border-line p-2 text-tSecondary active:text-tPrimary'>
+        <Link
+          href={redirectedPathName()}
+          className='select-none border-b border-line bg-surfacePrimary p-2 text-tSecondary active:text-tPrimary'
+        >
           <div className='flex items-center justify-between gap-2'>
             <span>{locale.layout.changeLang}</span>
             <Image
@@ -102,10 +105,6 @@ function Header({ locale }: { locale: DictT }) {
             />
           </div>
         </Link>
-        <div className='relative mt-auto aspect-[1.218] h-36 opacity-65'>
-          <Image src={'/images/logo.svg'} fill alt={'logo'} />
-        </div>
-        <div className='mx-auto mb-12 select-none pt-3 font-[100] text-accent-orange opacity-50'>learn together</div>
       </div>
     </header>
   );

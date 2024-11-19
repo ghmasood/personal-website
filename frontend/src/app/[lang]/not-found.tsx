@@ -29,7 +29,7 @@ export default function NotFoundPage() {
       <Link
         replace
         href={`${pathname.slice(0, 3)}/hello`}
-        className='flex -translate-y-20 items-start gap-1 text-tSecondary'
+        className='flex items-start gap-1 text-tSecondary md:-translate-y-20'
       >
         <span>{`> `}</span>
         <span className='relative md:w-[max-content] md:before:absolute md:before:inset-0 md:before:animate-[typewriter_4s_steps(59)_forwards] md:before:bg-surfacePrimary md:after:absolute md:after:bottom-0 md:after:end-0 md:after:start-0 md:after:h-0.5 md:after:w-4 md:after:animate-[typewriter_4s_steps(59)_forwards,blink_1s_steps(59)_infinite_4s] md:after:bg-tSecondary'>
