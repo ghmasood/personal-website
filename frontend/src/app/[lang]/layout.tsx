@@ -9,6 +9,8 @@ import { LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
 import DictionaryProvider from 'context/dictionaryProvider';
 import ReactQueryProviders from 'context/reactQueryProvider';
 
+import { appConfig } from 'utils/configs';
+
 import Layout from 'components/UI/Layout';
 
 import 'assets/styles/globals.scss';
@@ -38,7 +40,7 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
-      <GoogleTagManager gtmId='GTM-KNWSSBRX' />
+      <GoogleTagManager gtmId={appConfig.main.gtmID} />
       <body className={`${fira.variable} ${vazir.variable}`}>
         <DictionaryProvider dictionary={dictionary}>
           <NextUIProvider>
