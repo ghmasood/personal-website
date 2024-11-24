@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Fira_Code, Vazirmatn } from 'next/font/google';
 
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import { GoogleTagManager } from '@next/third-parties/google';
 import { NextUIProvider } from '@nextui-org/system';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
 
@@ -46,6 +48,8 @@ export default async function RootLayout({
           <NextUIProvider>
             <ReactQueryProviders>
               <Layout lang={lang}>{children}</Layout>
+              <SpeedInsights />
+              <Analytics />
             </ReactQueryProviders>
           </NextUIProvider>
         </DictionaryProvider>
