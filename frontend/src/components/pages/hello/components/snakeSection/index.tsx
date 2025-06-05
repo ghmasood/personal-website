@@ -21,6 +21,7 @@ function SnakeSection({ className = '', locale }: { className?: string; locale: 
   const { data } = useQuery({
     queryKey: ['highscore'],
     queryFn: (): Promise<highScoreResT> => getHighScoreFn(),
+    retry: 2,
   });
 
   return (
