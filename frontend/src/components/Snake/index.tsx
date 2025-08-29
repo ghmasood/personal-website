@@ -162,7 +162,6 @@ const Snake: React.FC<Props> = ({ points, setPoints, containerWidth, highScore }
     if (totalArr.filter((item) => item === snake[0].part[0]).length >= 2) {
       setGameOver(true);
       if (points > highScore) {
-        console.log('first');
         updateScoreMutate.mutate(points);
       }
     }

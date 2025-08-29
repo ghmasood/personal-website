@@ -1,5 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+import { useEffect } from 'react';
+import ReactPlayer from 'react-player';
+
 import { notFound } from 'next/navigation';
 
 import { useQuery } from '@tanstack/react-query';
@@ -10,16 +14,26 @@ import { DateTime } from 'luxon';
 import { getSingleBlogFn } from 'components/pages/blogs/services';
 
 function BlogSinglePage({ blogSlug, category, lang }: { blogSlug: string; category: string; lang: LangsT }) {
+  const [videoErr, setVideoErr] = useState(false);
   const { data } = useQuery({
     queryKey: ['blogs', category, blogSlug],
     queryFn: () => getSingleBlogFn(blogSlug),
   });
-  if (data?.data.length === 0) {
-    notFound();
-  }
   const selectedPost = data?.data[0];
   const content: TrustedHTML = lang === 'en' ? (selectedPost?.content_en ?? '') : (selectedPost?.content_fa ?? '');
 
+  useEffect(() => {
+    if (selectedPost?.video_url)
+      fetch(
+        `https://img.youtube.com/vi/${selectedPost?.video_url?.split('https://www.youtube.com/watch?v=')[1]}/0.jpg`
+      ,{cache:'no-cache'}).catch(() => setVideoErr(true));
+  }, [selectedPost?.video_url]);
+
+  console.log(videoErr);
+  if (data?.data.length === 0) {
+    notFound();
+  }
+  // console.log(isError);
   return (
     <div className='flex w-full flex-col gap-3 p-4'>
       <div className='flex items-center gap-4 text-sm font-light text-tSecondary'>
@@ -40,6 +54,15 @@ function BlogSinglePage({ blogSlug, category, lang }: { blogSlug: string; catego
           __html: content,
         }}
       />
+      {selectedPost?.video_url && !videoErr && (
+        <ReactPlayer
+          key={selectedPost.video_url}
+          width={'100%'}
+          height={'100%'}
+          className='mt-10 aspect-video w-full overflow-hidden rounded-xl shadow-md'
+          src={selectedPost.video_url}
+        />
+      )}
     </div>
   );
 }

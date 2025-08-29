@@ -90,6 +90,7 @@ export type BlogT = {
   admin_user: AdminUserT;
   category: CategoryT;
   tags: any[];
+  video_url?: string;
 };
 
 type PaginationT = {
