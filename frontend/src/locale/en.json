@@ -52,6 +52,13 @@
     "message": "_message:",
     "submit": "Submit",
     "contacts": "contacts",
-    "find": "find-me-also-in"
+    "find": "find-me-also-in",
+    "linkedin": "linkedin",
+    "github": "github",
+    "instagram": "instagram",
+    "youtube": "youtube",
+    "x": "X",
+    "whatsapp": "whatsapp",
+    "telegram": "telegram"
   }
 }

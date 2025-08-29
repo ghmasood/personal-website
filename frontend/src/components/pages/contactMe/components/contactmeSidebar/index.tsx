@@ -4,13 +4,11 @@ import Link from 'next/link';
 
 import {
   RiArrowRightSLine,
-  RiGithubFill,
-  RiInstagramFill,
+  RiGithubFill, // RiInstagramFill,
   RiLinkedinBoxFill,
   RiMailFill,
   RiPhoneFill,
-  RiTelegramFill,
-  RiTwitterXFill,
+  RiTelegramFill, // RiTwitterXFill,
   RiWhatsappFill,
   RiYoutubeFill,
 } from '@remixicon/react';
@@ -46,34 +44,49 @@ function ContactMeSideBar() {
           <RiArrowRightSLine className='rtl:rotate-180' />
           <span>{locale.find}</span>
         </div>
-        <div className='flex flex-col gap-2 ps-5 font-fira font-[300] text-tSecondary'>
-          <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+        <div className='flex flex-col gap-2 ps-5 font-[300] text-tSecondary'>
+          <Link
+            className='flex items-center gap-2 duration-400 hover:text-tPrimary/50'
+            href='https://www.linkedin.com/in/ghmasoud/'
+          >
             <RiLinkedinBoxFill size={'1.25rem'} />
-            linkedin
+            {locale.linkedin}
           </Link>
-          <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+          <Link
+            className='flex items-center gap-2 duration-400 hover:text-tPrimary/50'
+            href='https://github.com/ghmasood'
+          >
             <RiGithubFill size={'1.25rem'} />
-            github
+            {locale.github}
           </Link>
-          <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+          {/* <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
             <RiInstagramFill size={'1.25rem'} />
             instagram
-          </Link>
-          <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+          </Link> */}
+          <Link
+            className='flex items-center gap-2 duration-400 hover:text-tPrimary/50'
+            href='https://www.youtube.com/@masoudCODES'
+          >
             <RiYoutubeFill size={'1.25rem'} />
-            youtube
+            {locale.youtube}
           </Link>
-          <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+          {/* <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
             <RiTwitterXFill size={'1.25rem'} />
             twitter
-          </Link>
-          <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+          </Link> */}
+          <Link
+            className='flex items-center gap-2 duration-400 hover:text-tPrimary/50'
+            href='https://wa.me/989303939330'
+          >
             <RiWhatsappFill size={'1.25rem'} />
-            whatsapp
+            {locale.whatsapp}
           </Link>
-          <Link className='flex items-center gap-2 duration-400 hover:text-tPrimary/50' href='#'>
+          <Link
+            className='flex items-center gap-2 duration-400 hover:text-tPrimary/50'
+            href='https://t.me/+989303939330'
+          >
             <RiTelegramFill size={'1.25rem'} />
-            telegram
+            {locale.telegram}
           </Link>
         </div>
       </div>
