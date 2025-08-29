@@ -21,7 +21,7 @@ function BlogSinglePage({ blogSlug, category, lang }: { blogSlug: string; catego
   const content: TrustedHTML = lang === 'en' ? (selectedPost?.content_en ?? '') : (selectedPost?.content_fa ?? '');
 
   return (
-    <div className='flex flex-col gap-3 p-4'>
+    <div className='flex w-full flex-col gap-3 p-4'>
       <div className='flex items-center gap-4 text-sm font-light text-tSecondary'>
         <span className='w-fit rounded-full bg-accent-orange px-1.5 py-0.5 text-black'>
           {lang === 'en' ? selectedPost?.category.title_en : selectedPost?.category.title_fa}

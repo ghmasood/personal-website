@@ -19,7 +19,7 @@ export default async function blogsLayout({
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className='flex h-full flex-col md:flex-row'>
         <BlogsSideBar />
-        <div className='overflow-auto'>{children}</div>
+        <div className='w-full overflow-auto'>{children}</div>
       </div>
     </HydrationBoundary>
   );

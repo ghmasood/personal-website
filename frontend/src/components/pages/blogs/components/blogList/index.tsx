@@ -27,7 +27,9 @@ function BlogList({ lang, category = '' }: Props) {
 
   return (
     <div className='flex flex-wrap gap-4 text-tPrimary'>
-      {data?.data?.map((blog) => <BlogCard key={blog.id} data={blog} lang={lang} />)}
+      {[...(data?.data ?? [])].reverse().map((blog) => (
+        <BlogCard key={blog.id} data={blog} lang={lang} />
+      ))}
     </div>
   );
 }

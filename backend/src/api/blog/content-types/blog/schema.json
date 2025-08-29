@@ -75,6 +75,10 @@
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "mappedBy": "blogs"
+    },
+    "video_url": {
+      "type": "string",
+      "required": false
     }
   }
 }
