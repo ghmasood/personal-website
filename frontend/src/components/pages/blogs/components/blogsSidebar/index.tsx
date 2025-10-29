@@ -16,6 +16,7 @@ function BlogsSideBar() {
   //DICTIONARY
   const {
     settings: { language },
+    blogPage,
   } = useGetDictionaryClient();
 
   //API CALL
@@ -31,7 +32,7 @@ function BlogsSideBar() {
             'bg-surfaceSecondary border border-line hover:!bg-surfacePrimary group-data-[focus=true]:!bg-surfacePrimary  group-data-[focus=true]:!shadow group-data-[focus=true]:!shadow-surfacePrimary',
         }}
         radius='sm'
-        placeholder='search something...'
+        placeholder={blogPage.search}
         startContent={<RiSearchLine className='text-tSecondary' />}
       />
       <div className='relative flex w-full items-center gap-x-4 gap-y-1 overflow-scroll scrollbar-hide md:flex-col'>

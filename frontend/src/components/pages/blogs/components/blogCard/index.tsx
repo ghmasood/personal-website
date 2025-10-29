@@ -44,7 +44,7 @@ function BlogCard({ className = '', data, lang }: IBlogCardProps) {
         </span>
       </div>
       <div className='flex flex-col justify-between gap-2 px-2 py-3'>
-        <h3 className='text-lg font-bold text-white'>{lang === 'en' ? data.title_en : data.title_fa}</h3>
+        <h3 className='mb-0 text-lg font-bold text-white'>{lang === 'en' ? data.title_en : data.title_fa}</h3>
         <span className='text-base font-medium text-tSecondary'>
           {lang === 'en' ? data.summery_en : data.summery_fa}
         </span>

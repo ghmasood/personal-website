@@ -60,5 +60,12 @@
     "x": "X",
     "whatsapp": "whatsapp",
     "telegram": "telegram"
+  },
+
+  "blogPage": {
+    "search": "Search somethings...",
+    "category": "category",
+    "posts": "Posts",
+    "all": "all"
   }
 }

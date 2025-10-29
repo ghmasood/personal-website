@@ -20,9 +20,7 @@ export default async function Blogs(props: { params: Params }) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <div className='p-4'>
-        <BlogList lang={lang} />
-      </div>
+      <BlogList lang={lang} />
     </HydrationBoundary>
   );
 }

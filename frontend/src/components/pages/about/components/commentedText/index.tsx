@@ -51,7 +51,7 @@ function CommentedText({ text, id = '', title }: commentedTextT) {
       </div>
 
       <div ref={textRef} className='h-fit whitespace-pre-line'>
-        <h3 className='font-[650]'>{`\n${title}\n`}</h3>
+        <span className='font-[650]'>{`\n${title}\n`}</span>
         {text}
       </div>
     </div>

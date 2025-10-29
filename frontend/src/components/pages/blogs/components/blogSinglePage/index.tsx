@@ -25,15 +25,14 @@ function BlogSinglePage({ blogSlug, category, lang }: { blogSlug: string; catego
   useEffect(() => {
     if (selectedPost?.video_url)
       fetch(
-        `https://img.youtube.com/vi/${selectedPost?.video_url?.split('https://www.youtube.com/watch?v=')[1]}/0.jpg`
-      ,{cache:'no-cache'}).catch(() => setVideoErr(true));
+        `https://img.youtube.com/vi/${selectedPost?.video_url?.split('https://www.youtube.com/watch?v=')[1]}/0.jpg`,
+        { cache: 'no-cache' }
+      ).catch(() => setVideoErr(true));
   }, [selectedPost?.video_url]);
 
-  console.log(videoErr);
   if (data?.data.length === 0) {
     notFound();
   }
-  // console.log(isError);
   return (
     <div className='flex w-full flex-col gap-3 p-4'>
       <div className='flex items-center gap-4 text-sm font-light text-tSecondary'>

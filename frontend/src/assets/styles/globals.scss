@@ -3,6 +3,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    @apply mb-8 text-4xl font-bold tracking-tight;
+  }
+  h2 {
+    @apply mb-7 text-3xl font-semibold tracking-tight;
+  }
+  h3 {
+    @apply mb-6 text-2xl font-semibold;
+  }
+  h4 {
+    @apply mb-5 text-xl font-medium;
+  }
+  h5 {
+    @apply mb-4 text-lg font-medium;
+  }
+  h6 {
+    @apply mb-4 text-base font-medium;
+  }
+  p {
+    @apply mb-6 text-base leading-relaxed;
+  }
+  strong {
+    @apply font-extrabold;
+  }
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

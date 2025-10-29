@@ -8,6 +8,8 @@ import { useQuery } from '@tanstack/react-query';
 
 import type { LangsT } from 'locale/dictionaries';
 
+import { useGetDictionaryClient } from 'context/dictionaryProvider';
+
 import { getBlogsFn, getCategoriesFn } from '../../services';
 import BlogCard from '../blogCard';
 
@@ -15,7 +17,7 @@ type Props = { lang: LangsT; category?: string };
 
 function BlogList({ lang, category = '' }: Props) {
   const { data: categoriesRes } = useQuery({ queryKey: ['category'], queryFn: () => getCategoriesFn() });
-
+  const { blogPage } = useGetDictionaryClient();
   const catSlugs = categoriesRes?.data.map((cat) => cat.slug);
   if (categoriesRes && catSlugs && ![...catSlugs, ''].includes(category)) {
     notFound();
@@ -26,10 +28,26 @@ function BlogList({ lang, category = '' }: Props) {
   });
 
   return (
-    <div className='flex flex-wrap gap-4 text-tPrimary'>
-      {[...(data?.data ?? [])].reverse().map((blog) => (
-        <BlogCard key={blog.id} data={blog} lang={lang} />
-      ))}
+    <div className='flex h-full w-full flex-col gap-2 py-4'>
+      <div className='flex items-center justify-between px-4'>
+        <span className='capitalize text-tSecondary'>
+          {blogPage.category}: {category || blogPage.all}
+        </span>
+
+        <span className='capitalize text-tSecondary'>
+          {blogPage.posts}: {data?.data.length.toLocaleString(lang)}
+        </span>
+      </div>
+
+      <hr className='mb-2 border-line' />
+
+      <div className='flex flex-wrap gap-4 px-4 text-tPrimary'>
+        {[...(data?.data ?? [])]
+          .sort((a, b) => b.id - a.id)
+          .map((blog) => (
+            <BlogCard key={blog.id} data={blog} lang={lang} />
+          ))}
+      </div>
     </div>
   );
 }
