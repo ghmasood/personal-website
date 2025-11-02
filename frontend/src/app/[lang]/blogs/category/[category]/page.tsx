@@ -20,7 +20,7 @@ export default async function BlogCategoryPage(props: { params: Params }) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-        <BlogList lang={params.lang} category={params.category} />
+      <BlogList lang={params.lang} category={params.category} />
     </HydrationBoundary>
   );
 }

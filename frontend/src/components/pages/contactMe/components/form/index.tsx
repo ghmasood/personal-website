@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 import { Button } from '@nextui-org/button';
 import { Input, Textarea } from '@nextui-org/input';
 import { useMutation } from '@tanstack/react-query';
@@ -17,6 +19,14 @@ function ContactMeForm({ formData, setFormData, locale }: formDataProps) {
   const submitContactMutation = useMutation({
     mutationKey: ['submit-msg'],
     mutationFn: (data: formDataType) => contactMeFn(data),
+    onSuccess: () => {
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      });
+      toast.success(locale.successToast);
+    },
   });
   return (
     <div className='flex w-full flex-col items-center justify-center gap-5 border-line xl:min-w-[26.25rem] xl:max-w-[26.25rem] xl:border-e'>
@@ -69,6 +79,7 @@ function ContactMeForm({ formData, setFormData, locale }: formDataProps) {
         <Button
           className='mt-2 bg-accent-blue text-tPrimary'
           radius='sm'
+          isLoading={submitContactMutation.isPending}
           onClick={() => {
             submitContactMutation.mutate(formData);
           }}

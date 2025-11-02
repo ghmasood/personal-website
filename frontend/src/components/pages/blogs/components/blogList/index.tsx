@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 
 import type { LangsT } from 'locale/dictionaries';
+import { DateTime } from 'luxon';
 
 import { useGetDictionaryClient } from 'context/dictionaryProvider';
 
@@ -43,7 +44,7 @@ function BlogList({ lang, category = '' }: Props) {
 
       <div className='flex flex-wrap gap-4 px-4 text-tPrimary'>
         {[...(data?.data ?? [])]
-          .sort((a, b) => b.id - a.id)
+          .sort((a, b) => DateTime.fromISO(b.createdAt).toMillis() - DateTime.fromISO(a.createdAt).toMillis())
           .map((blog) => (
             <BlogCard key={blog.id} data={blog} lang={lang} />
           ))}

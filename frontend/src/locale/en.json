@@ -59,7 +59,8 @@
     "youtube": "youtube",
     "x": "X",
     "whatsapp": "whatsapp",
-    "telegram": "telegram"
+    "telegram": "telegram",
+    "successToast": "Your message has been sent successfully!"
   },
 
   "blogPage": {

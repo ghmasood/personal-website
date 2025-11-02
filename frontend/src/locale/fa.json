@@ -59,7 +59,8 @@
     "youtube": "یوتوب",
     "x": "ایکس",
     "whatsapp": "واتساپ",
-    "telegram": "تلگرام"
+    "telegram": "تلگرام",
+    "successToast": "پیام شما با موفقیت ارسال شد!"
   },
   "blogPage": {
     "search": "چیزی جستجو کنید...",

@@ -11,6 +11,7 @@ import { useQuery } from '@tanstack/react-query';
 import { LangsT } from 'locale/dictionaries';
 import { DateTime } from 'luxon';
 
+import RenderContent from './components/RenderContent';
 import { getSingleBlogFn } from 'components/pages/blogs/services';
 
 function BlogSinglePage({ blogSlug, category, lang }: { blogSlug: string; category: string; lang: LangsT }) {
@@ -47,12 +48,9 @@ function BlogSinglePage({ blogSlug, category, lang }: { blogSlug: string; catego
         </span>
       </div>
       <hr className='border-t border-tSecondary/20' />
-      <div
-        className='text-justify'
-        dangerouslySetInnerHTML={{
-          __html: content,
-        }}
-      />
+      <div className='text-justify text-tSecondary'>
+        <RenderContent htmlString={content.toLocaleString()} />
+      </div>
       {selectedPost?.video_url && !videoErr && (
         <ReactPlayer
           key={selectedPost.video_url}
