@@ -32,7 +32,7 @@ export default function RenderContent({ htmlString }: RenderContentProps) {
 
         // رندر تمیز با react-syntax-highlighter
         return (
-          <div className='relative z-[2] mx-12 my-6 overflow-hidden rounded-2xl bg-[#272a36] text-sm' dir='ltr'>
+          <div className='relative z-[2] xl:mx-12 my-6 overflow-hidden rounded-2xl bg-[#272a36] text-sm' dir='ltr'>
             <span className='absolute rounded-br-lg bg-surfacePrimary px-2 text-lg font-semibold uppercase italic'>
               {language}
             </span>
