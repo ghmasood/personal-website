@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   description: 'my personal website as front-end developer',
 };
 
-type Params = Promise<{ lang: LangsT }>;
+type Params = Promise<{ lang: string }>;
 
 export default async function RootLayout({
   children,
@@ -37,7 +37,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Params;
 }>) {
-  const lang = (await params).lang;
+  const lang = (await params).lang as LangsT;
   const dictionary = await useGetDictionaryAsync(lang);
 
   return (

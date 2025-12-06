@@ -3,7 +3,7 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { LangsT, useGetDictionaryAsync } from 'locale/dictionaries';
 
 import HelloPage from 'components/pages/hello';
-import { getHighScoreFn, getHighScoreServerFn } from 'components/pages/hello/services';
+import { getHighScoreServerFn } from 'components/pages/hello/services';
 
 type Params = Promise<{ lang: LangsT }>;
 

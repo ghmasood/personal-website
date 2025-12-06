@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import { RiFileCopy2Fill } from '@remixicon/react';
 
-import parse, { DOMNode, Element, HTMLReactParserOptions, domToReact } from 'html-react-parser';
+import parse, { DOMNode, Element, HTMLReactParserOptions } from 'html-react-parser';
 
 interface RenderContentProps {
   htmlString: string;
@@ -32,7 +32,7 @@ export default function RenderContent({ htmlString }: RenderContentProps) {
 
         // رندر تمیز با react-syntax-highlighter
         return (
-          <div className='relative z-[2] xl:mx-12 my-6 overflow-hidden rounded-2xl bg-[#272a36] text-sm' dir='ltr'>
+          <div className='relative z-[2] my-6 overflow-hidden rounded-2xl bg-[#272a36] text-sm xl:mx-12' dir='ltr'>
             <span className='absolute rounded-br-lg bg-surfacePrimary px-2 text-lg font-semibold uppercase italic'>
               {language}
             </span>

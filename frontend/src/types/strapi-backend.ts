@@ -41,6 +41,7 @@ type CoverImageT = {
   url: string;
   previewUrl: null | string;
   provider: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   provider_metadata: null | any;
   createdAt: string;
   updatedAt: string;
@@ -89,6 +90,7 @@ export type BlogT = {
   cover: CoverImageT;
   admin_user: AdminUserT;
   category: CategoryT;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tags: any[];
   video_url?: string;
 };

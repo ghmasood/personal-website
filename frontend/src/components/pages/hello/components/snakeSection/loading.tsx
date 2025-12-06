@@ -1,8 +1,6 @@
 import { RiLoader4Fill } from '@remixicon/react';
 
-import { type DictT, useGetDictionaryAsync } from 'locale/dictionaries';
-
-import { useGetDictionaryClient } from 'context/dictionaryProvider';
+import { useGetDictionaryAsync } from 'locale/dictionaries';
 
 import SnakeFrame from 'components/Snake/components/snakeFrame';
 

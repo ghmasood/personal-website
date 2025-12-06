@@ -13,6 +13,7 @@ function ImageWrapper({ ...rest }: ImageProps) {
   return (
     <Image
       {...rest}
+      alt={rest.alt}
       className={clsx(rest.className, 'opacity-0 transition-opacity duration-700')}
       ref={imgRef}
       onLoad={() => {

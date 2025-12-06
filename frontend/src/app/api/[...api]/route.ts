@@ -7,6 +7,7 @@ export async function GET(req: NextRequest) {
   try {
     const response = await backApi.get(req.url.split('/api')[1]);
     return NextResponse.json(response.data, { status: response.status });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     return NextResponse.json(error.response.data.error, { status: error.status });
   }
