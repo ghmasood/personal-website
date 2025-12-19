@@ -22,12 +22,12 @@ function BlogCard({ className = '', data, lang }: IBlogCardProps) {
     <Link
       href={`/${lang}/blogs/category/${data.category.slug}/${data.slug}`}
       className={clsx([
-        'flex w-full flex-col gap-2 overflow-hidden rounded-lg border border-line bg-surfaceSecondary shadow-sm shadow-background sm:flex-row',
+        'flex w-full flex-col gap-2 overflow-hidden rounded-lg border border-line bg-surfaceSecondary shadow-sm shadow-background sm:h-36 sm:flex-row',
         className,
       ])}
     >
       <div
-        className='relative aspect-square sm:h-32'
+        className='relative aspect-square sm:h-36'
         style={{
           backgroundImage: `url(/images/logo.svg)`,
           backgroundSize: '20%',
@@ -37,14 +37,16 @@ function BlogCard({ className = '', data, lang }: IBlogCardProps) {
           boxShadow: '4.1px 4.2px 4.2px hsl(0deg 0% 0% / 0.27)',
         }}
       >
-        <ImageWrapper src={data.cover?.formats.thumbnail.url} alt={`${data.title_en} thumbnail`} fill />
+        <ImageWrapper src={data.cover?.formats.thumbnail.url} alt={`${data.title_en} thumbnail`} fill quality={100} />
         <span className='absolute bottom-1 start-1 z-[1] rounded-full bg-surfaceSecondary/60 px-2 py-0.5 text-xs font-extralight text-tPrimary'>
           {lang === 'en' ? data.category.title_en : data.category.title_fa}
         </span>
       </div>
       <div className='flex flex-col justify-between gap-2 px-2 py-3'>
-        <h3 className='mb-0 text-lg font-bold text-white'>{lang === 'en' ? data.title_en : data.title_fa}</h3>
-        <span className='text-base font-medium text-tSecondary'>
+        <h3 className='mb-0 block whitespace-break-spaces text-lg font-bold text-white'>
+          {lang === 'en' ? data.title_en : data.title_fa}
+        </h3>
+        <span className='sr-only text-base font-medium text-tSecondary'>
           {lang === 'en' ? data.summery_en : data.summery_fa}
         </span>
         <span className='text-sm font-light text-tSecondary'>

@@ -29,7 +29,7 @@
     "lottie-react": "^2.4.1",
     "luxon": "^3.5.0",
     "negotiator": "^0.6.3",
-    "next": "^15.0.5",
+    "next": "15.5.9",
     "nextui-cli": "^0.3.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
